@@ -1,0 +1,91 @@
+.eventu-red{
+    background-color: var(--eventu-red);
+    color: white;
+}
+
+.eventu-pink-text{
+    color: var(--eventu-pink);
+}
+
+.card-header{
+    background-color: white;
+    padding-top: 0.5em;
+    padding-bottom: 0;
+}
+
+.card-header a:hover{
+    color: var(--eventu-pink);
+}
+
+.contenedor-portada{
+    position: relative;
+    color: white;
+}
+
+.organizador{
+    background-color: rgba(150, 150, 150, 0.8);
+    position: absolute;
+    width:100%;
+    bottom: 0;
+    font-size: 0.9em;
+}
+
+.fecha-creac{
+    background-color: rgba(150, 150, 150, 0.8);
+    position: absolute;
+    top: 0;
+    left: 0;
+    font-size: 0.9em;
+}
+
+ul.info-evento{
+    list-style-type: none;
+    padding-left: 0;
+    margin-top: 10%;
+}
+
+.info-item{
+    font-size: 0.9em;
+    margin-bottom: 2.5%;
+}
+
+.tarjeta-evento .enlace-evento{
+    text-decoration: none;
+    color: white;
+}
+
+.tarjeta-evento .enlace-evento:hover{
+    color: var(--eventu-pink);
+}
+
+.tarjeta-evento .etiqueta{
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.tarjeta-evento .etiqueta:hover{
+    color: var(--eventu-pink);
+}
+
+img{
+    object-fit: cover;
+}
+
+@media screen and (max-width: 575px){
+    img{
+        height: 200px;
+    }
+}
+
+@media screen and (min-width: 576px){
+    img{
+        min-height: 225px;
+    }
+}
+
+@media screen and (min-width: 768px){
+    img{
+        height: 250px;
+    }
+}

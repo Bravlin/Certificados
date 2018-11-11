@@ -1,0 +1,48 @@
+.contenedor-portada{
+    position: relative;
+    color: white;
+}
+
+.contenedor-nombre{
+    background-color: var(--eventu-red);
+    position: absolute;
+    bottom: 0;
+    width:100%;
+}
+
+.item-consulta .enlace-evento{
+    text-decoration: none;
+    color: white;
+}
+
+.item-consulta .enlace-evento:hover{
+    color: var(--eventu-pink);
+}
+
+.item-consulta i{
+    color: var(--eventu-pink);
+}
+
+.contenedor-info{
+    list-style-type: none;
+}
+
+.item-consulta .card-body{
+    background-color: rgb(245, 245, 245);
+}
+
+img{
+    object-fit: cover;
+}
+
+@media screen and (max-width: 575px){
+    img{
+        height: 140px;
+    }
+}
+
+@media screen and (min-width: 576px){
+    img{
+        height: 160px;
+    }
+}

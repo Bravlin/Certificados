@@ -1,0 +1,19 @@
+.editable{
+    background-color: transparent;
+    border: none;
+}
+
+.editable.ed-categoria{
+    color: var(--eventu-pink);
+    font-size: 1.25em;
+}
+
+.editable.ed-nombre{
+    color: white;
+    font-size: 2.5em;
+    width: 100%;
+}
+
+.editable.ed-descripcion{
+    width: 100%;
+}

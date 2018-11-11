@@ -1,0 +1,21 @@
+.comentario{
+    background-color: rgb(245, 245, 245);
+}
+
+.imagen-perfil{
+    object-fit: contain;
+}
+
+@media screen and (max-width: 575px){
+    .imagen-perfil{
+        width: 50px;
+        height: 50px;
+    }
+}
+
+@media screen and (min-width: 576px){
+    .imagen-perfil{
+        width: 75px;
+        height: 75px;
+    }
+}

@@ -1,0 +1,130 @@
+:root{
+    --eventu-red: rgb(255, 0, 51);
+    --eventu-pink: rgb(255, 147, 169);
+}
+
+body{
+    min-height: 100vh;
+}
+
+.eventu-button{
+    color: white;
+    background-color: var(--eventu-red);
+    border: none;
+}
+
+.eventu-button:hover{
+    background-color: var(--eventu-pink);
+}
+
+.minavbar{
+    padding-top: 0;
+    padding-bottom: 0;
+    box-shadow: 0 0 1em grey;
+    background-color: black;
+}
+
+.minavbar .navbar-toggler{
+    border: none;
+}
+
+.minavbar .navbar-toggler-icon {
+    background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 32 32' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba(255,255,255, 1)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 8h24M4 16h24M4 24h24'/%3E%3C/svg%3E");
+}
+
+.minavbar .navbar-toggler-icon:hover {
+    opacity: 0.5;
+}
+
+.navbar-dark .navbar-nav .nav-link{
+    color: white;
+    font-weight: bolder;
+}
+
+.minavbar li{
+    padding-left: 1em;
+    padding-right: 1em;
+}
+
+.minavbar li.active{
+    border-bottom-style: solid;
+    border-bottom-color: white;
+}
+
+.minavbar .navbar-brand{
+    font-family: "taurusLight";
+}
+
+.minavbar .boton-busqueda{
+    background-color: transparent;
+    color: white;
+    border: none;
+}
+
+.minavbar .boton-busqueda:hover{
+    color: var(--eventu-pink);
+}
+
+.minavbar .navbar-brand{
+    font-size: 2em;
+}
+
+.fondo-gris{
+    background-color: rgb(240, 240, 240);
+}
+
+.barra-vertical{
+    height: 100%;
+    position: sticky;
+    top: 10%;
+}
+
+.barra-vertical ul{
+    list-style-type: none;
+}
+
+.barra-vertical li{
+    font-size: 1em;
+}
+
+.barra-vertical .lista-navegables a, .barra-fondo a{
+    text-decoration: none;
+    color: black;
+}
+
+.barra-vertical a:hover, .barra-fondo a:hover, .barra-vertical i:hover, .barra-fondo i:hover{
+    text-decoration: none;
+    color: var(--eventu-pink);
+}
+
+.barra-vertical i, .barra-fondo i{
+    color: var(--eventu-red);
+    height: 20px;
+    width: 20px;
+}
+
+.barra-vertical i{
+    margin-right: 1em;
+}
+
+.barra-fondo a{
+    display: block;
+}
+
+.barra-fondo a p{
+    font-size: 0.65em;
+    margin: 0;
+}
+
+.populares h5{
+    font-weight: bold;
+}
+
+.populares a{
+    text-decoration: none;
+    color: var(--eventu-red);
+}
+
+.overflow-auto{
+    overflow-y: auto;
+}

@@ -1,0 +1,68 @@
+.jumbotron.bienvenida{
+    background-color: rgba(255, 255, 255, 0);
+}
+
+.bienvenida{
+    display: block;
+    position: relative;
+}
+
+.bienvenida::after{
+    content: "";
+    background-image: url("../src/imagenes/event-distribution.png");
+    background-size: cover;
+    background-position: center center;
+    opacity: 0.45;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    position: absolute;
+    z-index: -1;
+}
+
+.bienvenida h1{
+    color: rgb(92, 92, 92);
+}
+
+@media screen and (max-width: 575px){
+    .bienvenida .eventuButton{
+        font-size: 2em;
+    }
+}
+
+@media screen and (min-width: 576px){
+    .bienvenida .eventuButton{
+        font-size: 3em;
+    }
+}
+
+.presentacion{
+    margin-top: 5em;
+    margin-bottom: 5em;
+}
+
+.presentacion .row{
+    margin-top: 3em;
+}
+
+.presentacion .row *{
+    padding-left: 5%;
+    padding-right: 5%;
+}
+
+.contenedor-video{
+    position: relative;
+    padding-bottom: 56.25%;
+    height: 0;
+    overflow: hidden;
+}
+
+.video{
+    position: absolute;
+    border: 0;
+    top:0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}

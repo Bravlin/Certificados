@@ -1,0 +1,55 @@
+.contenedor-pagina{
+    padding-top: 2.5em;
+    padding-bottom: 2.5em;
+}
+
+.form-container{
+    width: 100%;
+}
+
+.color-blanco{
+    background-color: white;
+}
+
+.color-eventu-red{
+    background-color: var(--eventu-red);
+}
+
+.formulario-principal h1{
+    color: rgb(92, 92, 92);
+    padding-bottom: 5%;
+    padding-left: 5%;
+    padding-right: 5%;
+    font-size: 2em;
+}
+
+.cuerpo-form{
+    width: 100%;
+    margin-top: 0;
+    margin-left: 0;
+    margin-right: 0;
+    margin-bottom: 2em;
+}
+
+.elemento-form{
+    margin-bottom: 1em;
+}
+
+.eventuButton{
+    font-size: 1.5em;
+    width: 40%;
+}
+
+.erroneo, .erroneo:focus{
+    background-color: #ff0000;
+}
+
+.valido, .valido:focus{
+    background-color: #00ff00;
+}
+
+.alerta{
+    color: red;
+    font-size: 0.8em;
+    padding-left: 10px;
+}

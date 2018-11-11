@@ -1,0 +1,65 @@
+@font-face{
+    font-family: "taurusLight";
+    src: url("../src/fuentes/Taurus-Light.woff");
+}
+
+:root{
+    --eventu-red: rgb(255, 0, 51);
+    --eventu-pink: rgb(255, 147, 169);
+}
+
+.eventuButton{
+    color: white;
+    background-color: var(--eventu-red);
+    border: none;
+}
+
+.eventuButton:hover{
+    color: white;
+    background-color: var(--eventu-pink);
+}
+
+.logo{
+    font-family: "taurusLight";
+    font-size: 4em;
+}
+
+.logo:hover{
+    text-decoration: none;
+}
+
+header .logo{
+    color: var(--eventu-red);
+}
+
+.contenedor-pagina, footer{
+    width: 100%;
+}
+
+footer .logo{
+    margin-top: 0;
+    color: white;
+}
+
+footer .container-fluid{
+    background-color: black;
+    height: 100%;
+}
+
+footer .contacto{
+    color: white;
+}
+
+footer .redes h3{
+    color: white;
+}
+
+footer .redes a{
+    color: white;
+    font-size: 3em;
+}
+
+footer .copyright{
+    margin-top: 4em;
+    color: white;
+}

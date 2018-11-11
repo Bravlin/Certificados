@@ -1,0 +1,22 @@
+.info-perfil{
+    background-color: var(--eventu-red);
+    color: white;
+}
+
+.avatar{
+    max-width: 90%;
+    max-height: 300px;
+    border-style: solid;
+    border-color: white;
+    border-width: 5px;
+    object-fit: cover;
+}
+
+.cerrar-sesion{
+    text-decoration: none;
+    color: white;
+}
+
+.cerrar-sesion:hover{
+    color: var(--eventu-pink);
+}

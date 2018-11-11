@@ -1,0 +1,24 @@
+.contenedor-pagina{
+    background-color: var(--eventu-red);
+}
+
+.form-container{
+    width: 100%;
+}
+
+form.login{
+    background-color: white;
+}
+
+form.login h1{
+    color: rgb(92, 92, 92);
+    padding-bottom: 5%;
+    padding-left: 5%;
+    padding-right: 5%;
+    font-size: 2em;
+}
+
+.alerta{
+    color: red;
+    font-size: 0.8em;
+}

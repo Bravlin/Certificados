@@ -1,0 +1,60 @@
+.item-usuario{
+    background-color: rgb(245, 245, 245);
+    width: 95%;
+}
+
+.item-usuario i{
+    color: var(--eventu-pink);
+    width: 20px;
+    height: 20px;
+}
+
+.item-usuario ul{
+    list-style: none;
+}
+
+.contenedor-imagen{
+    height: 200px; 
+    background-color: var(--eventu-red);
+}
+
+.imagen-perfil{
+    width: 100%;
+    height: 100%;
+}
+
+.contenedor-nombre{
+    width:100%;
+    background-color: var(--eventu-red);
+    
+}
+
+.nombre-apellido{
+    color: white;
+    text-decoration: none;
+}
+
+.nombre-apellido:hover{
+    color: var(--eventu-pink);
+    text-decoration: none;
+}
+
+@media screen and (max-width: 575px){
+    .nombre-apellido{
+        font-size: 1.25em;
+    }
+    
+    .imagen-perfil{
+        object-fit: contain;
+    }
+}
+
+@media screen and (min-width: 576px){
+    .nombre-apellido{
+        font-size: 1.5em;
+    }
+    
+    .imagen-perfil{
+        object-fit: cover;
+    }
+}
