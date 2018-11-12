@@ -4,19 +4,19 @@
 }
 
 :root{
-    --eventu-red: rgb(255, 0, 51);
-    --eventu-pink: rgb(255, 147, 169);
+    --ing-verde: rgb(0,114,114);
+    --ing-azul: #5AADDD;
 }
 
 .eventuButton{
     color: white;
-    background-color: var(--eventu-red);
+    background-color: var(--ing-verde);
     border: none;
 }
 
 .eventuButton:hover{
     color: white;
-    background-color: var(--eventu-pink);
+    background-color: var(--ing-azul);
 }
 
 .logo{
@@ -29,7 +29,7 @@
 }
 
 header .logo{
-    color: var(--eventu-red);
+    color: var(--ing-verde);
 }
 
 .contenedor-pagina, footer{

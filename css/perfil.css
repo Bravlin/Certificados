@@ -1,5 +1,5 @@
 .info-perfil{
-    background-color: var(--eventu-red);
+    background-color: var(--ing-verde);
     color: white;
 }
 
@@ -18,5 +18,5 @@
 }
 
 .cerrar-sesion:hover{
-    color: var(--eventu-pink);
+    color: var(--ing-azul);
 }

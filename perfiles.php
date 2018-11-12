@@ -8,18 +8,18 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Participantes - Eventu</title>
+    <title>Perfiles - SCSC</title>
     <?php require('comun/head-navegacion.php'); ?>
-    <link rel="stylesheet" type="text/css" href="css/item-participante.css">
+    <link rel="stylesheet" type="text/css" href="css/item-perfil.css">
     <style>
-        .agregar-usuario{
-            color: var(--eventu-red);
+        .agregar-perfil{
+            color: var(--ing-verde);
             text-decoration: none;
             font-size: 1.75em;
         }
         
-        .agregar-usuario:hover{
-            color: var(--eventu-pink);
+        .agregar-perfil:hover{
+            color: var(--ing-azul);
             text-decoration: none;
         }
     </style>
@@ -30,22 +30,22 @@
         <div class="row">
             <?php require('comun/barra-vertical.php'); ?>
             <div class="col-12 col-md-9 col-lg-10 py-5">
-                <h1 class="mb-5 text-center">Administrador de participantes</h1>
+                <h1 class="mb-5 text-center">Administrador de perfiles</h1>
                 <div class="mb-3">
-                    <a href="agregar-participante.php" class="agregar-usuario">
-                        <i class="fa fa-plus-circle mr-1"></i>Agregar participante
+                    <a href="agregar-perfil.php" class="agregar-perfil">
+                        <i class="fa fa-plus-circle mr-1"></i>Agregar perfil
                     </a>
                 </div>
                 <div class="row px-2 justify-content-center">
                     <?php
-                        $participantes_query = mysqli_query($db,
+                        $perfiles_query = mysqli_query($db,
                             "SELECT p.id, p.nombre, p.apellido, p.telefono, p.email, p.fecha,
                             p.facultad, p.universidad
                             FROM ptds p
                             ORDER BY p.nombre ASC;"
                             );
-                        while ($participante = mysqli_fetch_array($participantes_query))
-                            require('item-participante.php');
+                        while ($perfil = mysqli_fetch_array($perfiles_query))
+                            require('item-perfil.php');
                     ?>
                 </div>
             </div>

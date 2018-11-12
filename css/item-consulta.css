@@ -4,7 +4,7 @@
 }
 
 .contenedor-nombre{
-    background-color: var(--eventu-red);
+    background-color: var(--ing-verde);
     position: absolute;
     bottom: 0;
     width:100%;
@@ -16,11 +16,11 @@
 }
 
 .item-consulta .enlace-evento:hover{
-    color: var(--eventu-pink);
+    color: var(--ing-azul);
 }
 
 .item-consulta i{
-    color: var(--eventu-pink);
+    color: var(--ing-azul);
 }
 
 .contenedor-info{

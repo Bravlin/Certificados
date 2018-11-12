@@ -1,21 +1,21 @@
-.item-participante{
+.item-perfil{
     background-color: rgb(245, 245, 245);
     width: 95%;
 }
 
-.item-participante i{
-    color: var(--eventu-pink);
+.item-perfil i{
+    color: var(--ing-azul);
     width: 20px;
     height: 20px;
 }
 
-.item-participante ul{
+.item-perfil ul{
     list-style: none;
 }
 
 .contenedor-imagen{
     height: 200px; 
-    background-color: var(--eventu-red);
+    background-color: var(--ing-verde);
 }
 
 .imagen-perfil{
@@ -25,7 +25,7 @@
 
 .contenedor-nombre{
     width:100%;
-    background-color: var(--eventu-red);
+    background-color: var(--ing-verde);
     
 }
 
@@ -35,7 +35,7 @@
 }
 
 .nombre-apellido:hover{
-    color: var(--eventu-pink);
+    color: var(--ing-azul);
     text-decoration: none;
 }
 

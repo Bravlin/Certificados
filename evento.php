@@ -18,7 +18,7 @@
     $idEvento = $_REQUEST['id_evento'];
     if (!isset($_REQUEST['confirma']) || $_REQUEST['confirma'] != 'si'){
         $eventos_query = mysqli_query($db,
-            "SELECT e.id_evento, e.nombre AS nombre_evento, e.fecha_comienzo, e.fecha_creacion,
+            "SELECT e.id_evento, e.nombre AS nombre_evento, e.fecha_realizacion, e.fecha_creacion,
             e.descripcion, e.direccion_calle AS calle, e.direccion_altura AS altura,
             ciudad.nombre AS nombre_ciudad, ciudad.id_ciudad,
             provincia.nombre AS nombre_provincia, provincia.id_provincia
@@ -34,7 +34,7 @@
             $altura = $evento['altura'];
             $codProvincia = $evento['id_provincia'];
             $codCiudad = $evento['id_ciudad'];
-            $fechaRealiz = $evento['fecha_comienzo'];
+            $fechaRealiz = $evento['fecha_realizacion'];
         }
     }
     else {
@@ -59,10 +59,10 @@
             $calle = mysqli_real_escape_string($db, $calle);
             mysqli_query($db,
                 "UPDATE evento
-                SET nombre = '$nombreEvento', descripcion = '$descripcion', fechaRealiz = '$fechaRealiz',
+                SET nombre = '$nombreEvento', descripcion = '$descripcion', fecha_realizacion = '$fechaRealiz',
                     direccion_calle = '$calle', direccion_altura = $altura, fk_ciudad = $codCiudad
-                WHERE idEvento = $idEvento;");
-            header("location: evento.php?idEvento=$idEvento");
+                WHERE id_evento = $idEvento;");
+            header("location: evento.php?id_evento=$idEvento");
         }
     }
 ?>

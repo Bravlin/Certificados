@@ -1,9 +1,9 @@
 .categoria, .info-general i{
-    color: var(--eventu-pink);
+    color: var(--ing-azul);
 }
 
 .categoria:hover{
-    color: var(--eventu-pink);
+    color: var(--ing-azul);
 }
 
 .contenedor-portada{
@@ -55,5 +55,5 @@
 }
 
 .usuario, .usuario:hover{
-    color: var(--eventu-pink);
+    color: var(--ing-azul);
 }

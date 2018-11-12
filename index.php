@@ -22,7 +22,7 @@
                 <div class="row">
                     <?php
                         $eventos_query = mysqli_query($db,
-                            "SELECT e.id_evento, e.nombre AS nombre_evento, e.fecha_comienzo, e.fecha_creacion,
+                            "SELECT e.id_evento, e.nombre AS nombre_evento, e.fecha_realizacion, e.fecha_creacion,
                             e.direccion_calle, e.direccion_altura,
                             ciudad.nombre AS nombre_ciudad,
                             provincia.nombre AS nombre_provincia

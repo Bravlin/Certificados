@@ -4,7 +4,7 @@
 
 .info{
     color: white;
-    background-color: var(--eventu-red);
+    background-color: var(--ing-verde);
     font-size: 1.15em;
 }
 
@@ -28,7 +28,7 @@
 }
 
 .enlace-evento:hover{
-    color: var(--eventu-pink);
+    color: var(--ing-azul);
     text-decoration: none;
 }
 

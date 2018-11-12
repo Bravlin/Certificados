@@ -37,7 +37,7 @@
             $calle = mysqli_real_escape_string($db, $calle);
             $fechaCreac = date("Y-m-d h:i:sa");
             mysqli_query($db,
-                "INSERT INTO evento (nombre, fecha_creacion, fecha_comienzo, descripcion, direccion_calle, direccion_altura, fk_ciudad)
+                "INSERT INTO evento (nombre, fecha_creacion, fecha_realizacion, descripcion, direccion_calle, direccion_altura, fk_ciudad)
                 VALUES ('$nombre', '$fechaCreac', '$fecreal', '$descripcion', '$calle', $callealt, $codCiudad);");
             $idEvento = mysqli_insert_id($db);
             if (is_uploaded_file($_FILES['portada']['tmp_name']))

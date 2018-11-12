@@ -1,27 +1,22 @@
-:root{
-    --eventu-red: rgb(255, 0, 51);
-    --eventu-pink: rgb(255, 147, 169);
-}
-
 body{
     min-height: 100vh;
 }
 
 .eventu-button{
     color: white;
-    background-color: var(--eventu-red);
+    background-color: var(--ing-verde);
     border: none;
 }
 
 .eventu-button:hover{
-    background-color: var(--eventu-pink);
+    background-color: var(--ing-azul);
 }
 
 .minavbar{
     padding-top: 0;
     padding-bottom: 0;
     box-shadow: 0 0 1em grey;
-    background-color: black;
+    background-color: var(--ing-verde);
 }
 
 .minavbar .navbar-toggler{
@@ -62,7 +57,7 @@ body{
 }
 
 .minavbar .boton-busqueda:hover{
-    color: var(--eventu-pink);
+    color: var(--ing-azul);
 }
 
 .minavbar .navbar-brand{
@@ -94,11 +89,11 @@ body{
 
 .barra-vertical a:hover, .barra-fondo a:hover, .barra-vertical i:hover, .barra-fondo i:hover{
     text-decoration: none;
-    color: var(--eventu-pink);
+    color: var(--ing-azul);
 }
 
 .barra-vertical i, .barra-fondo i{
-    color: var(--eventu-red);
+    color: var(--ing-verde);
     height: 20px;
     width: 20px;
 }
@@ -122,7 +117,7 @@ body{
 
 .populares a{
     text-decoration: none;
-    color: var(--eventu-red);
+    color: var(--ing-verde);
 }
 
 .overflow-auto{

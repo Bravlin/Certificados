@@ -35,7 +35,7 @@
                 <li>
                     <i class="fa fa-calendar"></i>
                     <?php
-                        $fechaHora = strtotime($evento['fecha_comienzo']);
+                        $fechaHora = strtotime($evento['fecha_realizacion']);
                         echo date('d/m/Y', $fechaHora);
                     ?>
                     <i class="fa fa-clock-o pl-3"></i>

@@ -20,9 +20,9 @@
                 </a>
             </div>
             <div class="col-3">
-                <a href="participantes.php">
+                <a href="perfiles.php">
                     <i class="fa fa-user"></i>
-                    <p>Participantes</p>
+                    <p>Perfiles</p>
                 </a>
             </div>
         </div>

@@ -13,13 +13,13 @@
     <link rel="stylesheet" type="text/css" href="/css/item-consulta.css">
     <style>
         .agregar-evento{
-            color: var(--eventu-red);
+            color: var(--ing-verde);
             text-decoration: none;
             font-size: 1.75em;
         }
         
         .agregar-evento:hover{
-            color: var(--eventu-pink);
+            color: var(--ing-azul);
             text-decoration: none;
         }
     </style>
@@ -37,7 +37,7 @@
                 <div class="row">
                     <?php
                         $eventos_query = mysqli_query($db,
-                            "SELECT e.id_evento, e.nombre AS nombre_evento, e.fecha_comienzo, e.fecha_creacion,
+                            "SELECT e.id_evento, e.nombre AS nombre_evento, e.fecha_realizacion, e.fecha_creacion,
                             e.direccion_calle, e.direccion_altura,
                             ciudad.nombre AS nombre_ciudad,
                             provincia.nombre AS nombre_provincia

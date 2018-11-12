@@ -1,10 +1,10 @@
 .eventu-red{
-    background-color: var(--eventu-red);
+    background-color: var(--ing-verde);
     color: white;
 }
 
 .eventu-pink-text{
-    color: var(--eventu-pink);
+    color: var(--ing-azul);
 }
 
 .card-header{
@@ -14,7 +14,7 @@
 }
 
 .card-header a:hover{
-    color: var(--eventu-pink);
+    color: var(--ing-azul);
 }
 
 .contenedor-portada{
@@ -55,7 +55,7 @@ ul.info-evento{
 }
 
 .tarjeta-evento .enlace-evento:hover{
-    color: var(--eventu-pink);
+    color: var(--ing-azul);
 }
 
 .tarjeta-evento .etiqueta{
@@ -65,7 +65,7 @@ ul.info-evento{
 }
 
 .tarjeta-evento .etiqueta:hover{
-    color: var(--eventu-pink);
+    color: var(--ing-azul);
 }
 
 img{
