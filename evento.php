@@ -109,7 +109,7 @@
                     <h5>Descripción:</h5>
                     <textarea id="descripcion" name="descripcion" class="editable ed-descripcion"><?php echo $descripcion; ?></textarea>
                     <div class="info-general row py-3 my-5">
-                        <div class="col-12 col-sm-6 mb-3 mb-sm-0 row">
+                        <div class="col-12 col-lg-6 mb-3 mb-sm-0 row">
                             <div class="col-12 elemento-form mb-3">
                                     <label for="fechaReal"><i class="fa fa-calendar"></i> Fecha y <i class="fa fa-clock-o"></i> hora</label>
                                     <input id="fechaReal" name="fecreal" type="datetime-local" class="form-control"
@@ -122,7 +122,7 @@
                             <div class="col-12 mb-2">
                                 <i class="fa fa-map-marker"></i> Ubicación
                             </div>
-                            <div class="col-sm-12 col-lg-6 elemento-form mb-2">
+                            <div class="col-sm-6 elemento-form mb-2">
                                 <label for="calle">Calle</label>
                                 <input id="calle" name="calle" type="text" class="form-control"
                                     value="<?php echo $calle; ?>" required>
@@ -131,7 +131,7 @@
                                         echo '<p class="alerta">La calle no puede quedar vacía</p>';
                                 ?>
                             </div>
-                            <div class="col-sm-12 col-lg-6 elemento-form mb-2">
+                            <div class="col-sm-6 elemento-form mb-2">
                                 <label for="altura">Altura</label>
                                 <input id="altura" name="callealt" type="number" class="form-control"
                                     value="<?php echo $altura; ?>" required>
@@ -140,7 +140,7 @@
                                         echo '<p class="alerta">Altura inválida</p>';
                                 ?>
                             </div>
-                            <div class="col-sm-12 col-lg-6 elemento-form mb-2">
+                            <div class="col-sm-6 elemento-form mb-2">
                                 <label for="provincia">Provincia</label>
                                 <select id="provincia" name="provincia" class="form-control" required>
                                     <?php
@@ -157,7 +157,7 @@
                                         echo '<p class="alerta">Ninguna provincia ha sido seleccionada</p>';
                                 ?>
                             </div>
-                            <div class="col-sm-12 col-lg-6 elemento-form mb-2">
+                            <div class="col-sm-6 elemento-form mb-2">
                                 <label for="ciudad">Ciudad</label>
                                 <select id="ciudad" name="ciudad" class="form-control" required>
                                     <?php
@@ -187,7 +187,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="col-12 col-sm-6 d-flex flex-column">
+                        <div class="col-12 col-lg-6 d-flex flex-column">
                             <div class="contenedor-nivel2 mt-3 col-12">
                                 <div class="contenedor-mapa">
                                     <?php
@@ -205,30 +205,12 @@
                         </div>
                     </div>
                 </form>
-                <h5 class="mb-5">Comentarios</h5>
-                <div class="mb-4">
-                    <textarea id="ingresar-comentario" class="form-control mb-3" placeholder="Escribe un comentario..."></textarea>
-                    <button id="enviar-comentario" class="button btn-primary" type="button" disabled>Enviar</button>
-                </div>
-                <div id="comentarios" class="container comentarios">
-                    <?php
-                        $comentarios_query = mysqli_query($db,
-                            "SELECT com.contenido, com.idUsuario, com.fechaCreac,
-                            u.nombres AS nombresCread, u.apellidos AS apellidosCread
-                            FROM comentarios com
-                            INNER JOIN usuarios u ON u.idUsuario = com.idUsuario
-                            WHERE com.idEvento = $idEvento
-                            ORDER BY com.fechaCreac DESC");
-                        while ($comentario = mysqli_fetch_array($comentarios_query))
-                            require('comentario.php');
-                    ?>
-                </div>
+                <a class="btn btn-primary" href="felipe.php">Enviar certificados</a>
             </div>
         </div>
     </div>
     <?php require('comun/barra-fondo.php'); ?>
     
     <script type="text/javascript" src="/js/manejador-ajax.js"></script>
-    <script type="text/javascript" src="../js/evento-handler.js"></script>
 </body>
 </html>

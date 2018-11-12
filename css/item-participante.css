@@ -1,15 +1,15 @@
-.item-usuario{
+.item-participante{
     background-color: rgb(245, 245, 245);
     width: 95%;
 }
 
-.item-usuario i{
+.item-participante i{
     color: var(--eventu-pink);
     width: 20px;
     height: 20px;
 }
 
-.item-usuario ul{
+.item-participante ul{
     list-style: none;
 }
 

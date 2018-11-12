@@ -41,7 +41,7 @@
                 VALUES ('$fecha', '$nombres', '$apellidos', '$telefono', '$email', '$facultad', '$universidad');");
             mysqli_query($db, "INSERT INTO asistencia (Fecha, Nombre, Apellido, Telefono, Email, Organismo)
                 VALUES ('$fecha', '$nombres', '$apellidos', '$telefono', '$email', '$universidad');");
-            header("location: index.php");
+            header("location: participantes.php");
         }
     }
 ?>

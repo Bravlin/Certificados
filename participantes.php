@@ -8,9 +8,9 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Usuarios - Eventu</title>
+    <title>Participantes - Eventu</title>
     <?php require('comun/head-navegacion.php'); ?>
-    <link rel="stylesheet" type="text/css" href="css/item-usuario.css">
+    <link rel="stylesheet" type="text/css" href="css/item-participante.css">
     <style>
         .agregar-usuario{
             color: var(--eventu-red);
@@ -32,23 +32,20 @@
             <div class="col-12 col-md-9 col-lg-10 py-5">
                 <h1 class="mb-5 text-center">Administrador de participantes</h1>
                 <div class="mb-3">
-                    <a href="agregar-participante.php" class="agregar-usuario"><i class="fa fa-plus-circle mr-1"></i>Agregar usuario</a>
+                    <a href="agregar-participante.php" class="agregar-usuario">
+                        <i class="fa fa-plus-circle mr-1"></i>Agregar participante
+                    </a>
                 </div>
-                <div class="row px-2">
+                <div class="row px-2 justify-content-center">
                     <?php
-                        $usuarios_query = mysqli_query($db,
-                        "SELECT u.idUsuario, u.nombres, u.apellidos, u.fechaNac, u.email, u.tipo,
-                        dir.calle, dir.altura,
-                        ciu.nombre AS nombreCiudad,
-                        prov.nombre AS nombreProvincia
-                        FROM usuarios u
-                        INNER JOIN direcciones dir ON dir.idDireccion = u.idDireccion
-                        INNER JOIN ciudades ciu ON ciu.codCiudad = dir.codCiudad
-                        INNER JOIN provincias prov ON prov.codProvincia = ciu.codProvincia
-                        ORDER BY u.nombres ASC;
-                        ");
-                        while ($usuario = mysqli_fetch_array($usuarios_query))
-                            require('item-usuario.php');
+                        $participantes_query = mysqli_query($db,
+                            "SELECT p.id, p.nombre, p.apellido, p.telefono, p.email, p.fecha,
+                            p.facultad, p.universidad
+                            FROM ptds p
+                            ORDER BY p.nombre ASC;"
+                            );
+                        while ($participante = mysqli_fetch_array($participantes_query))
+                            require('item-participante.php');
                     ?>
                 </div>
             </div>
