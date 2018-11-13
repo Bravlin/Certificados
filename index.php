@@ -19,6 +19,7 @@
             <?php require('comun/barra-vertical.php'); ?>
             <div class="col-12 col-md-9 col-lg-10 py-5">
                 <h1 class="mb-5 text-center">Bienvenido al sistema de envío de certificados</h1>
+                <h3 class="mb-4">Eventos agregados recientemente</h3>
                 <div class="row">
                     <?php
                         $eventos_query = mysqli_query($db,
@@ -31,7 +32,7 @@
                             INNER JOIN provincia ON provincia.id_provincia = ciudad.fk_provincia
                             ORDER BY e.fecha_creacion DESC;");
                         while ($evento = mysqli_fetch_array($eventos_query))
-                            require('item-consulta.php');
+                            require('item-evento.php');
                     ?>
                 </div>
             </div>

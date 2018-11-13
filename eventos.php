@@ -46,7 +46,7 @@
                             INNER JOIN provincia ON provincia.id_provincia = ciudad.fk_provincia
                             ORDER BY e.nombre ASC;");
                         while ($evento = mysqli_fetch_array($eventos_query))
-                            require('item-consulta.php');
+                            require('item-evento.php');
                     ?>
                 </div>
             </div>

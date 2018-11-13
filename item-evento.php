@@ -2,7 +2,7 @@
     $enlaceEvento = "evento.php?id_evento=" . $evento['id_evento'];
 ?>
 
-<div class="col-12 col-sm-6 col-md-4 col-lg-3 mb-5 d-flex align-items-stretch">
+<div class="col-12 col-sm-6 col-lg-4 col-xl-3 mb-5 d-flex align-items-stretch">
     <div class="card item-consulta">
         <div class="contenedor-portada">
             <a href="<?php echo $enlaceEvento; ?>">

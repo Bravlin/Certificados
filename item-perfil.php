@@ -20,19 +20,9 @@
             </div>
             <ul class="pl-0 mx-4">
                 <li>
-                    <i class="fa fa-check-square mr-1"></i><?php
-                        if (isset($perfil['asistencia']))
-                            echo $perfil['asistencia'];
-                        else
-                            echo "Sin definir";
-                    ?>
+                    <i class="fa fa-map-marker mr-1"></i><?php echo $perfil['organismo'];?>
                 </li>
-                <li>
-                    <i class="fa fa-map-marker mr-1"></i><?php
-                        echo $perfil['facultad'] . ', ' . $perfil['universidad'];
-                    ?>
-                </li>
-                <li><i class="fa fa-calendar mr-1"></i><?php echo date("d/m/Y", strtotime($perfil['fecha'])); ?></li>
+                <li><i class="fa fa-calendar mr-1"></i><?php echo $perfil['cargo']; ?></li>
                 <li><i class="fa fa-envelope mr-1"></i><?php echo $perfil['email']; ?></li>
                 <li><i class="fa fa-phone mr-1"></i><?php echo $perfil['telefono']; ?></li>
             </ul>

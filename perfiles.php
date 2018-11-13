@@ -36,12 +36,12 @@
                         <i class="fa fa-plus-circle mr-1"></i>Agregar perfil
                     </a>
                 </div>
-                <div class="row px-2 justify-content-center">
+                <div class="row px-2">
                     <?php
                         $perfiles_query = mysqli_query($db,
-                            "SELECT p.id, p.nombre, p.apellido, p.telefono, p.email, p.fecha,
-                            p.facultad, p.universidad
-                            FROM ptds p
+                            "SELECT p.id, p.nombre, p.apellido, p.telefono, p.email,
+                            p.organismo, p.cargo
+                            FROM perfil p
                             ORDER BY p.nombre ASC;"
                             );
                         while ($perfil = mysqli_fetch_array($perfiles_query))

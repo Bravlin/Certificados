@@ -9,8 +9,8 @@
     $apellidos_ok = true;
     $telefono_ok = true;
     $email_ok = true;
-    $facultad_ok = true;
-    $universidad_ok = true;
+    $organismo_ok = true;
+    $cargo_ok = true;
     
     // Procesamiento del formulario
     if (isset($_REQUEST['confirma']) && $_REQUEST['confirma'] == 'si'){
@@ -18,29 +18,22 @@
         $apellidos = $_REQUEST['apellidos'];
         $telefono = $_REQUEST['telefono'];
         $email = $_REQUEST['email'];
-        $facultad = $_REQUEST['facultad'];
-        $universidad = $_REQUEST['universidad'];
+        $organismo = $_REQUEST['organismo'];
+        $cargo = $_REQUEST['cargo'];
         // Validaciones
         $nombres_ok = $nombres != '';
         $apellidos_ok = $apellidos != '';
         $telefono_ok = $telefono != '';
         $email_ok = filter_var($email, FILTER_VALIDATE_EMAIL);
-        $facultad_ok = $facultad != '';
-        $universidad_ok = $universidad != '';
-        if ($nombres_ok && $apellidos_ok && $telefono_ok && $email_ok && $facultad_ok && $universidad_ok){
+        $organismo_ok = $organismo != '';
+        $cargo_ok = $cargo != '';
+        if ($nombres_ok && $apellidos_ok && $telefono_ok && $email_ok && $organismo_ok && $cargo_ok){
             $nombres = mysqli_real_escape_string($db, $nombres);
             $apellidos = mysqli_real_escape_string($db, $apellidos);
-            $facultad = mysqli_real_escape_string($db, $facultad);
-            $universidad = mysqli_real_escape_string($db, $universidad);
-            $fecha = date("Y-m-d");
-            echo "INSERT INTO ptds (fecha, nombre, apellido, telefono, email, facultad, universidad)
-            VALUES ('$fecha', '$nombres', '$apellidos', '$telefono', '$email', '$facultad', '$universidad');";
-            echo "INSERT INTO ptds (Fecha, Nombre, Apellido, Telefono, Email, Organismo)
-            VALUES ('$fecha', '$nombres', '$apellidos', '$telefono', '$email', '$universidad');";
-            mysqli_query($db, "INSERT INTO ptds (fecha, nombre, apellido, telefono, email, facultad, universidad)
-                VALUES ('$fecha', '$nombres', '$apellidos', '$telefono', '$email', '$facultad', '$universidad');");
-            mysqli_query($db, "INSERT INTO asistencia (Fecha, Nombre, Apellido, Telefono, Email, Organismo)
-                VALUES ('$fecha', '$nombres', '$apellidos', '$telefono', '$email', '$universidad');");
+            $organismo = mysqli_real_escape_string($db, $organismo);
+            $cargo = mysqli_real_escape_string($db, $cargo);
+            mysqli_query($db, "INSERT INTO perfil (nombre, apellido, telefono, email, organismo, cargo)
+                VALUES ('$nombres', '$apellidos', '$telefono', '$email', '$organismo', '$cargo');");
             header("location: perfiles.php");
         }
     }
@@ -83,8 +76,8 @@
                                 ?>
                             </div>
                             <div class="col-sm-12 col-md-6 elemento-form">
-                                <label for="fechaNac">Teléfono</label>
-                                <input id="fechaNac" name="telefono" type="tel" class="form-control" placeholder="+54..."
+                                <label for="telefono">Teléfono</label>
+                                <input id="telefono" name="telefono" type="tel" class="form-control" placeholder="+54..."
                                 value="<?php if(isset($_REQUEST['telefono'])) echo $_REQUEST['telefono']; ?>" required>
                                 <?php
                                     if (!$telefono_ok)
@@ -101,26 +94,26 @@
                                 ?>
                             </div>
                             <div class="col-sm-12 col-md-6 elemento-form">
-                                <label for="facultad">Facultad</label>
-                                <input id="facultad" name="facultad" type="text" class="form-control" placeholder="Facultad" 
-                                value="<?php if(isset($_REQUEST['facultad'])) echo $_REQUEST['facultad']; ?>" required>
+                                <label for="organismo">Organismo</label>
+                                <input id="organismo" name="organismo" type="text" class="form-control" placeholder="Organismo" 
+                                value="<?php if(isset($_REQUEST['organismo'])) echo $_REQUEST['organismo']; ?>" required>
                                 <?php
-                                    if (!$facultad_ok)
-                                        echo '<p class="alerta">Debe indicar una facultad.</p>';
+                                    if (!$organismo_ok)
+                                        echo '<p class="alerta">Debe indicar un organismo.</p>';
                                 ?>
                             </div>
                             <div class="col-sm-12 col-md-6 elemento-form">
-                                <label for="universidad">Universidad</label>
-                                <input id="universidad" name="universidad" type="text" class="form-control" placeholder="Universidad" 
-                                value="<?php if(isset($_REQUEST['universidad'])) echo $_REQUEST['universidad']; ?>" required>
+                                <label for="cargo">Cargo</label>
+                                <input id="cargo" name="cargo" type="text" class="form-control" placeholder="Cargo" 
+                                value="<?php if(isset($_REQUEST['cargo'])) echo $_REQUEST['cargo']; ?>" required>
                                 <?php
-                                    if (!$universidad_ok)
-                                        echo '<p class="alerta">Debe indicar una universidad.</p>';
+                                    if (!$cargo_ok)
+                                        echo '<p class="alerta">Debe indicar un cargo.</p>';
                                 ?>
                             </div>
                         </div>
                         <div class="row justify-content-center">
-                            <button id="enviar" class="btn eventuButton" type="submit">Inscribir</button>
+                            <button id="enviar" class="btn eventuButton" type="submit">Registrar</button>
                         </div>
                     </form>
                 </div>
