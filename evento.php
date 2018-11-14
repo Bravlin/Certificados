@@ -210,7 +210,12 @@
                             <?php
                                 $perfil_query = mysqli_query($db, 
                                     "SELECT id, nombre, apellido, email 
-                                    FROM perfil 
+                                    FROM perfil
+                                    WHERE id NOT IN(
+                                        SELECT fk_perfil
+                                        FROM inscripcion
+                                        WHERE fk_evento = $idEvento
+                                    ) 
                                     ORDER BY nombre, apellido ASC;");
                                 while ($perfil = mysqli_fetch_array($perfil_query))
                                     echo "<option value='".$perfil['id']."'>".
@@ -229,7 +234,7 @@
                         </select>
                     </div>
                     <div class="mt-3 mt-sm-0 col-sm-4">
-                        <button id="boton-inscribir" class="button btn-primary" type="button" disabled>Inscribir</button>
+                        <button id="boton-inscribir" class="btn btn-primary" type="button" disabled>Inscribir</button>
                     </div>
                 </div>
                 <div class="table-responsive">
@@ -242,9 +247,10 @@
                                 <th scope="col">Fecha de inscripción</th>
                                 <th scope="col">Participación</th>
                                 <th scope="col">Asistencia</th>
+                                <th scope="col"></th>
                             </tr>
                         </thead>
-                        <tbody>
+                        <tbody id="body-inscripciones">
                             <?php
                                 $inscripciones_query = mysqli_query($db,
                                     "SELECT p.id AS id_perfil, p.nombre, p.apellido, p.email,
@@ -255,13 +261,18 @@
                                     ORDER BY p.nombre, p.apellido;");
                                 if ($inscripciones_query)
                                     while ($inscripcion = mysqli_fetch_array($inscripciones_query)){
-                                        echo '<tr>
+                                        echo '<tr id="inscripcion-'.$inscripcion['id_inscripcion'].'">
                                             <th scope="row">'.$inscripcion['nombre'].'</th>
                                             <th scope="row">'.$inscripcion['apellido'].'</th>
                                             <th scope="row">'.$inscripcion['email'].'</th>
                                             <th scope="row">'.date('Y-m-d', strtotime($inscripcion['fecha_inscripcion'])).'</th>
                                             <th scope="row">'.$inscripcion['tipo'].'</th>
                                             <th scope="row">'.$inscripcion['asistencia'].'</th>
+                                            <th scope="row">
+                                                <button class="eliminar-inscripcion btn btn-danger" valor="'.$inscripcion['id_inscripcion'].'">
+                                                    Borrar
+                                                </button>
+                                            </th>
                                         </tr>';
                                     }
                             ?>

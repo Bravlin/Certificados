@@ -47,8 +47,27 @@ $(document).ready(function(){
                 idPerfil: idPerfil,
                 tipo: tipo
             },
-            success:function(){
+            success:function(html){
+                $('#body-inscripciones').prepend(html);
+                $('#boton-inscribir').prop("disabled", true);
             }
         });
     });
+
+    $('#body-inscripciones').on('click', '.eliminar-inscripcion', function(){
+        if (confirm("¿Está seguro que desea eliminar la inscripción indicada?")){
+            var idInscrip = $(this).attr('valor');
+            $.ajax({
+                type: 'POST',
+                url: '/lib/eliminar-inscripcion.php',
+                data: {
+                    idInscrip: idInscrip,
+                },
+                success:function(){
+                    var inscrip = "#inscripcion-" + idInscrip;
+                    $(inscrip).remove();
+                }
+            });
+        }
+    })
 });
