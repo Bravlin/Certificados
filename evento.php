@@ -202,7 +202,35 @@
                         </div>
                     </div>
                 </form>
-                <a class="btn btn-primary" href="felipe.php">Enviar certificados</a>
+                <div class="table-responsive">
+                    <table class="table table-striped table-hover table-sm">
+                        <thead class="thead-dark">
+                            <tr>
+                                <th scope="col">Nombre</th>
+                                <th scope="col">Apellido</th>
+                                <th scope="col">E-mail</th>
+                                <th scope="col">Fecha de inscripción</th>
+                                <th scope="col">Participación</th>
+                                <th scope="col">Asistencia</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <?php
+                                $inscripciones_query = mysqli_query($db,
+                                    "SELECT p.id AS id_perfil, p.nombre, p.apellido, p.mail,
+                                    i.id_inscripcion, i.tipo, i.asistencia
+                                    FROM perfil p
+                                    INNER JOIN inscripcion i ON i.fk_perfil = p.id
+                                    WHERE i.fk_evento = $idEvento
+                                    ORDER BY p.nombre, p.apellido;");
+                                if ($inscripciones_query)
+                                    while ($inscripcion = mysqli_fetch_array($inscripciones_query)){
+
+                                    }
+                            ?>
+                        </tbody>
+                    </table>
+                </div>
             </div>
         </div>
     </div>
