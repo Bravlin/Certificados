@@ -36,7 +36,7 @@
                         <i class="fa fa-plus-circle mr-1"></i>Agregar perfil
                     </a>
                 </div>
-                <div class="row px-2">
+                <div id="perfiles" class="row px-2">
                     <?php
                         $perfiles_query = mysqli_query($db,
                             "SELECT p.id, p.nombre, p.apellido, p.telefono, p.email,
@@ -52,5 +52,7 @@
         </div>
     </div>
     <?php require('comun/barra-fondo.php'); ?>
+
+    <script type="text/javascript" src="/js/manejador-perfil.js"></script>
 </body>
 </html>

@@ -1,4 +1,4 @@
-<div class="col-12 col-lg-6 mb-5 px-0">
+<div id="perfil-<?php echo $perfil['id']; ?>" class="col-12 col-lg-6 mb-5 px-0">
     <div class="row item-perfil mx-auto border border-secondary">
         <div class="col-12 col-sm-4 contenedor-imagen px-0 py-3 py-sm-0">
             <a href="perfil.php?id=<?php echo $perfil['id']; ?>">
@@ -19,13 +19,14 @@
                 </a>
             </div>
             <ul class="pl-0 mx-4">
-                <li>
-                    <i class="fa fa-map-marker mr-1"></i><?php echo $perfil['organismo'];?>
-                </li>
-                <li><i class="fa fa-calendar mr-1"></i><?php echo $perfil['cargo']; ?></li>
+                <li><i class="fa fa-map-marker mr-1"></i><?php echo $perfil['organismo'];?></li>
+                <li><i class="fa fa-group mr-1"></i><?php echo $perfil['cargo']; ?></li>
                 <li><i class="fa fa-envelope mr-1"></i><?php echo $perfil['email']; ?></li>
                 <li><i class="fa fa-phone mr-1"></i><?php echo $perfil['telefono']; ?></li>
             </ul>
+            <button class="eliminar-perfil btn btn-danger ml-3 mb-3" valor="<?php echo $perfil['id']; ?>">
+                Eliminar
+            </button>
         </div>
     </div>
 </div>

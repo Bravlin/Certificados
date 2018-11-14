@@ -24,7 +24,7 @@
         $nombres_ok = $nombres != '';
         $apellidos_ok = $apellidos != '';
         $telefono_ok = $telefono != '';
-        $email_ok = filter_var($email, FILTER_VALIDATE_EMAIL);
+        $email_ok = validaEmail($email, $db);
         $organismo_ok = $organismo != '';
         $cargo_ok = $cargo != '';
         if ($nombres_ok && $apellidos_ok && $telefono_ok && $email_ok && $organismo_ok && $cargo_ok){
@@ -36,6 +36,15 @@
                 VALUES ('$nombres', '$apellidos', '$telefono', '$email', '$organismo', '$cargo');");
             header("location: perfiles.php");
         }
+    }
+
+    function validaEmail($email, $db){
+        if (filter_var($email, FILTER_VALIDATE_EMAIL)){
+            $query_verificacion = mysqli_query($db, "SELECT * FROM perfil WHERE email = '$email';");
+            return mysqli_num_rows($query_verificacion) == 0;
+        }
+        else
+            return false;
     }
 ?>
 
@@ -90,7 +99,7 @@
                                 value="<?php if(isset($_REQUEST['email'])) echo $_REQUEST['email']; ?>" required>
                                 <?php
                                     if (!$email_ok)
-                                        echo '<p class="alerta">Email inválido</p>';
+                                        echo '<p class="alerta">El email es inválido o ya existe.</p>';
                                 ?>
                             </div>
                             <div class="col-sm-12 col-md-6 elemento-form">

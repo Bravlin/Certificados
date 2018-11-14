@@ -180,10 +180,7 @@
                                 <div class="mt-3">
                                     <input type="hidden" name="confirma" value="si"/>
                                     <button class="btn btn-primary" type="submit">Modificar</button>
-                                    <a class="btn btn-danger ml-3"
-                                        href="php-scripts/eliminar-evento.php?idEvento=<?php echo $idEvento; ?>">
-                                        Eliminar
-                                    </a>
+                                    <button id="eliminar-evento" class="btn btn-danger ml-3">Eliminar</button>
                                 </div>
                             </div>
                         </div>
@@ -211,6 +208,8 @@
     </div>
     <?php require('comun/barra-fondo.php'); ?>
     
+    <div id="id_evento" valor="<?php echo $idEvento; ?>" hidden></div>
+    <script type="text/javascript" src="/js/manejador-evento.js"></script>
     <script type="text/javascript" src="/js/manejador-ajax.js"></script>
 </body>
 </html>
