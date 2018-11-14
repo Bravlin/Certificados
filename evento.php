@@ -202,6 +202,36 @@
                         </div>
                     </div>
                 </form>
+                <h3>Inscripciones</h3>
+                <div class="row my-4">
+                    <div class="col-12 col-sm-4">
+                        <select id="select-perfil" class="form-control" required>
+                            <option value="">Elija a quien inscribir...</option>
+                            <?php
+                                $perfil_query = mysqli_query($db, 
+                                    "SELECT id, nombre, apellido, email 
+                                    FROM perfil 
+                                    ORDER BY nombre, apellido ASC;");
+                                while ($perfil = mysqli_fetch_array($perfil_query))
+                                    echo "<option value='".$perfil['id']."'>".
+                                        $perfil['nombre']." ".$perfil['apellido']." - ".$perfil['email'].
+                                        "</option>";
+                            ?>
+                        </select>
+                    </div>
+                    <div class="col-12 col-sm-4 mt-3 mt-sm-0">
+                        <select id="select-tipo" class="form-control" required>
+                            <option value="">Participa como...</option>
+                            <option value="Asistente">Asistente</option>
+                            <option value="Evaluador">Evaluador</option>
+                            <option value="Organizador">Organizador</option>
+                            <option value="Disertante">Disertante</option>
+                        </select>
+                    </div>
+                    <div class="mt-3 mt-sm-0 col-sm-4">
+                        <button id="boton-inscribir" class="button btn-primary" type="button" disabled>Inscribir</button>
+                    </div>
+                </div>
                 <div class="table-responsive">
                     <table class="table table-striped table-hover table-sm">
                         <thead class="thead-dark">
@@ -217,15 +247,22 @@
                         <tbody>
                             <?php
                                 $inscripciones_query = mysqli_query($db,
-                                    "SELECT p.id AS id_perfil, p.nombre, p.apellido, p.mail,
-                                    i.id_inscripcion, i.tipo, i.asistencia
+                                    "SELECT p.id AS id_perfil, p.nombre, p.apellido, p.email,
+                                    i.id_inscripcion, i.tipo, i.fecha_inscripcion, i.asistencia
                                     FROM perfil p
                                     INNER JOIN inscripcion i ON i.fk_perfil = p.id
                                     WHERE i.fk_evento = $idEvento
                                     ORDER BY p.nombre, p.apellido;");
                                 if ($inscripciones_query)
                                     while ($inscripcion = mysqli_fetch_array($inscripciones_query)){
-
+                                        echo '<tr>
+                                            <th scope="row">'.$inscripcion['nombre'].'</th>
+                                            <th scope="row">'.$inscripcion['apellido'].'</th>
+                                            <th scope="row">'.$inscripcion['email'].'</th>
+                                            <th scope="row">'.date('Y-m-d', strtotime($inscripcion['fecha_inscripcion'])).'</th>
+                                            <th scope="row">'.$inscripcion['tipo'].'</th>
+                                            <th scope="row">'.$inscripcion['asistencia'].'</th>
+                                        </tr>';
                                     }
                             ?>
                         </tbody>

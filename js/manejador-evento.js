@@ -15,5 +15,40 @@ $(document).ready(function(){
                 }
             });
         }
-    })
+    });
+
+    $('#select-perfil').on('change', function(){
+        var idPerfil = $('#select-perfil').val();
+        var tipo = $('#select-tipo').val();
+        if (idPerfil != "" && tipo != "")
+            $('#boton-inscribir').prop("disabled", false);
+        else
+            $('#boton-inscribir').prop("disabled", true);
+    });
+
+    $('#select-tipo').on('change', function(){
+        var idPerfil = $('#select-perfil').val();
+        var tipo = $('#select-tipo').val();
+        if (idPerfil != "" && tipo != "")
+            $('#boton-inscribir').prop("disabled", false);
+        else
+            $('#boton-inscribir').prop("disabled", true);
+    });
+
+    $('#boton-inscribir').on('click', function(){
+        var idEvento = $('#id_evento').attr('valor');
+        var idPerfil = $('#select-perfil').val();
+        var tipo = $('#select-tipo').val();
+        $.ajax({
+            type: 'POST',
+            url: '/lib/inscribir.php',
+            data: {
+                idEvento: idEvento,
+                idPerfil: idPerfil,
+                tipo: tipo
+            },
+            success:function(){
+            }
+        });
+    });
 });
