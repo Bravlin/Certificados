@@ -1,7 +1,7 @@
 <footer>
     <div class="container-fluid text-center">
         <div class="logo">
-            <img src="src/imagenes/logo.svg">Eventu
+            <img src="src/imagenes/logo.svg">FICertif
         </div>
         <div class="row my-5 mx-2 text-center justify-content-center">
             <div class="form-container col-12 col-lg-6 row justify-content-center">
@@ -22,6 +22,6 @@
                 </div>
             </div>
         </div>
-        <p class="copyright"><i class="fa fa-copyright"></i>  Eventu 2018</p>
+        <p class="copyright"><i class="fa fa-copyright"></i>  ficertif 2018</p>
     </div>  
 </footer>

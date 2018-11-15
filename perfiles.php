@@ -8,7 +8,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Perfiles - SCSC</title>
+    <title>Perfiles - FICertif</title>
     <?php require('comun/head-navegacion.php'); ?>
     <link rel="stylesheet" type="text/css" href="css/item-perfil.css">
     <style>

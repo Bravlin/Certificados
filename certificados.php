@@ -3,12 +3,43 @@
     require('lib/sesion-redireccion.php');
     require('lib/funcdb.php');
     $db = conectadb();
+
+    function consultaPorTipo($db){
+        if (isset($_REQUEST['idEvento'])){
+            $idEvento = $_REQUEST['idEvento'];
+            return mysqli_query($db,
+                "SELECT e.nombre AS evento,
+                p.nombre, p.apellido,
+                c.id_certificado, c.fecha_emision, c.nombre_certificado AS archivo, c.email_enviado AS email,
+                i.tipo
+                FROM certificado c
+                INNER JOIN inscripcion i ON c.fk_inscripcion = i.id_inscripcion
+                INNER JOIN evento e ON i.fk_evento = e.id_evento
+                INNER JOIN perfil p ON i.fk_perfil = p.id
+                WHERE id_evento = $idEvento
+                ORDER BY p.nombre, p.apellido;");
+        }
+        elseif (isset($_REQUEST['idPerfil'])){
+            $idPerfil = $_REQUEST['idPerfil'];
+            return mysqli_query($db,
+                "SELECT e.nombre AS evento,
+                p.nombre, p.apellido,
+                c.id_certificado, c.fecha_emision, c.nombre_certificado AS archivo, c.email_enviado AS email,
+                i.tipo
+                FROM certificado c
+                INNER JOIN inscripcion i ON c.fk_inscripcion = i.id_inscripcion
+                INNER JOIN evento e ON i.fk_evento = e.id_evento
+                INNER JOIN perfil p ON i.fk_perfil = p.id
+                WHERE p.id = $idPerfil
+                ORDER BY evento;");
+        }
+    }
 ?>
 
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Certificados - Eventu</title>
+    <title>Certificados - FICertif</title>
     <?php require('comun/head-navegacion.php'); ?>
 </head>
 <body>
@@ -34,37 +65,25 @@
                         </thead>
                         <tbody id="body-certificados">
                             <?php
-                                if (isset($_REQUEST['idEvento'])){
-                                    $idEvento = $_REQUEST['idEvento'];
-                                    $certif_query = mysqli_query($db,
-                                        "SELECT e.nombre AS evento,
-                                        p.nombre, p.apellido,
-                                        c.fecha_emision, c.nombre_certificado AS archivo, c.email_enviado AS email,
-                                        i.tipo
-                                        FROM certificado c
-                                        INNER JOIN inscripcion i ON c.fk_inscripcion = i.id_inscripcion
-                                        INNER JOIN evento e ON i.fk_evento = e.id_evento
-                                        INNER JOIN perfil p ON i.fk_perfil = p.id
-                                        WHERE id_evento = $idEvento
-                                        ORDER BY p.nombre, p.apellido;");
-                                    while ($certif = mysqli_fetch_array($certif_query)){
-                                        $ruta_archivo =  "certificados/".$certif['archivo']; 
-                                        echo '<tr>
-                                            <td>'.$certif['evento'].'</td>
-                                            <td>'.$certif['nombre'].'</td>
-                                            <td>'.$certif['apellido'].'</td>
-                                            <td>'.$certif['email'].'</td>
-                                            <td>'.date('Y-m-d', strtotime($certif['fecha_emision'])).'</td>
-                                            <td>'.$certif['tipo'].'</td>
-                                            <td><a href="'.$ruta_archivo.'">Ver</a></td>
-                                            <td>
-                                                <button class="eliminar-certificado btn btn-danger">
-                                                    Borrar
-                                                </button>
-                                            </td>
-                                        </tr>';
-                                    }
-                                } 
+                                $certif_query = consultaPorTipo($db);
+                                while ($certif = mysqli_fetch_array($certif_query)){
+                                    $idCertif = $certif['id_certificado'];
+                                    $ruta_archivo =  "certificados/".$certif['archivo']; 
+                                    echo '<tr id="certificado-'.$idCertif.'">
+                                        <td>'.$certif['evento'].'</td>
+                                        <td>'.$certif['nombre'].'</td>
+                                        <td>'.$certif['apellido'].'</td>
+                                        <td>'.$certif['email'].'</td>
+                                        <td>'.date('Y-m-d', strtotime($certif['fecha_emision'])).'</td>
+                                        <td>'.$certif['tipo'].'</td>
+                                        <td><a href="'.$ruta_archivo.'">Ver</a></td>
+                                        <td>
+                                            <button class="eliminar-certificado btn btn-danger" valor="'.$idCertif.'">
+                                                Borrar
+                                            </button>
+                                        </td>
+                                    </tr>';
+                                }
                             ?>
                         </tbody>
                     </table>
@@ -73,5 +92,7 @@
         </div>
     </div>
     <?php require('comun/barra-fondo.php'); ?>
+
+    <script type="text/javascript" src="js/manejador-certificados.js"></script>
 </body>
 </html>

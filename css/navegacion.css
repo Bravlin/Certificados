@@ -2,13 +2,13 @@ body{
     min-height: 100vh;
 }
 
-.eventu-button{
+.ficertif-button{
     color: white;
     background-color: var(--ing-verde);
     border: none;
 }
 
-.eventu-button:hover{
+.ficertif-button:hover{
     background-color: var(--ing-azul);
 }
 

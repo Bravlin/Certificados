@@ -8,7 +8,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Admin - Eventu</title>
+    <title>Admin - FICertif</title>
     <?php require('comun/head-navegacion.php'); ?>
     <link rel="stylesheet" type="text/css" href="/css/item-consulta.css">
 </head>

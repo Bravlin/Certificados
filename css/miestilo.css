@@ -8,13 +8,13 @@
     --ing-azul: #5AADDD;
 }
 
-.eventuButton{
+.ficertifButton{
     color: white;
     background-color: var(--ing-verde);
     border: none;
 }
 
-.eventuButton:hover{
+.ficertifButton:hover{
     color: white;
     background-color: var(--ing-azul);
 }

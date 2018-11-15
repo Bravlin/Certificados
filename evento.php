@@ -70,7 +70,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title><?php echo $nombreEvento; ?> - Eventu</title>
+    <title><?php echo $nombreEvento; ?> - FICertif</title>
     <?php require('comun/head-navegacion.php'); ?>
     <link rel="stylesheet" type="text/css" href="css/evento.css">
     <link rel="stylesheet" type="text/css" href="css/edicion-evento.css">

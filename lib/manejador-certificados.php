@@ -89,7 +89,7 @@
                     $row = $result2->fetch_object();
                     $result2->free();
                     //if ($row->count == 0) {
-                    if ($row->count >= 0) {
+                    if ($row->count == 0) {
                         $param= $id.rand(1000,9999);
                         $param=str_pad($param, 8, '0', STR_PAD_LEFT);
 

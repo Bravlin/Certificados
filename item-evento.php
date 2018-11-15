@@ -29,7 +29,7 @@
                     <?php echo $evento['fecha_creacion']?>
                 </li>
                 <li class="mb-2">
-                    <i class="fa fa-map-marker eventu-pink-text"></i>
+                    <i class="fa fa-map-marker ficertif-pink-text"></i>
                     <?php echo $evento['direccion_calle'].' '.$evento['direccion_altura'].', '.$evento['nombre_ciudad'].', '.$evento['nombre_provincia']; ?>
                 </li>
                 <li>

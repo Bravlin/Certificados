@@ -28,7 +28,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Login - Eventu</title>
+    <title>Login - FICertif</title>
     <?php require('comun/head-comun.php'); ?>
     <link rel="stylesheet" type="text/css" href="css/login.css">
 </head>
@@ -36,7 +36,7 @@
     <header>
         <div class="container-fluid text-center">
             <a class="logo mb-5 mt-0" href="index.php">
-                <img src="src/imagenes/logo.svg">Eventu
+                <img src="src/imagenes/logo.svg">FICertif
             </a>
         </div>
     </header>
@@ -67,7 +67,7 @@
                             </label>
                         </div>
                         <div class="col-12 col-lg-6">
-                            <button class="btn eventuButton ml-lg-4" type="submit">Acceder</button>
+                            <button class="btn ficertifButton ml-lg-4" type="submit">Acceder</button>
                         </div>
                     </div>
                     <p class="mt-3 col-12"><a href="">¿Olvidaste tu contraseña?</a></p>

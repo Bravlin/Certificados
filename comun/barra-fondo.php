@@ -10,7 +10,7 @@
             <div class="col-3">
                 <a href="">
                     <i class="fa fa-bell"></i>
-                    <p>Notificaciones</p>
+                    <p>Certificados</p>
                 </a>
             </div>
             <div class="col-3">

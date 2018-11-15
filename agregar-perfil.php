@@ -51,7 +51,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Agregar perfil - Eventu</title>
+    <title>Agregar perfil - FICertif</title>
     <?php require('comun/head-navegacion.php'); ?>
     <link rel="stylesheet" type="text/css" href="/css/formulario.css">
 </head>
@@ -122,7 +122,7 @@
                             </div>
                         </div>
                         <div class="row justify-content-center">
-                            <button id="enviar" class="btn eventuButton" type="submit">Registrar</button>
+                            <button id="enviar" class="btn ficertifButton" type="submit">Registrar</button>
                         </div>
                     </form>
                 </div>

@@ -57,7 +57,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Agregar evento - Eventu</title>
+    <title>Agregar evento - FICertif</title>
     <?php require('comun/head-navegacion.php'); ?>
     <link rel="stylesheet" type="text/css" href="/css/formulario.css">
 </head>
@@ -147,7 +147,7 @@
                             </div>
                         </div>
                         <div class="row justify-content-center">
-                            <button class="btn eventuButton" type="submit">Enviar</button>
+                            <button class="btn ficertifButton" type="submit">Enviar</button>
                         </div>
                     </form>
                 </div>
