@@ -46,10 +46,6 @@ body{
     border-bottom-color: white;
 }
 
-.minavbar .navbar-brand{
-    font-family: "taurusLight";
-}
-
 .minavbar .boton-busqueda{
     background-color: transparent;
     color: white;
@@ -61,7 +57,12 @@ body{
 }
 
 .minavbar .navbar-brand{
-    font-size: 2em;
+    width: 7em;
+}
+
+.minavbar .logo{
+    width: 100%;
+    height: 100%;
 }
 
 .fondo-gris{

@@ -72,9 +72,9 @@
 <head>
     <title><?php echo $nombreEvento; ?> - Eventu</title>
     <?php require('comun/head-navegacion.php'); ?>
-    <link rel="stylesheet" type="text/css" href="/css/evento.css">
-    <link rel="stylesheet" type="text/css" href="/css/edicion-evento.css">
-    <link rel="stylesheet" type="text/css" href="/css/comentario.css">
+    <link rel="stylesheet" type="text/css" href="css/evento.css">
+    <link rel="stylesheet" type="text/css" href="css/edicion-evento.css">
+    <link rel="stylesheet" type="text/css" href="css/comentario.css">
     <style>
         .alerta{
             color: red;
@@ -202,7 +202,14 @@
                         </div>
                     </div>
                 </form>
-                <h3>Inscripciones</h3>
+                <h3 class="mb-4">Inscripciones</h3>
+                <h5>Certificados:</h5>
+                <div class="my-4">
+                    <button id="emitir-todos" class="btn btn-primary" type="button">Emitir a todos</button>
+                    <a class="btn btn-secondary ml-2" href="certificados.php?idEvento=<?php echo $idEvento; ?>">
+                        Consultar
+                    </a>
+                </div>
                 <div class="row my-4">
                     <div class="col-12 col-sm-4">
                         <select id="select-perfil" class="form-control" required>
@@ -268,17 +275,17 @@
                                             <option value="0" '.(($asistencia == 0) ? "selected" : "").'>No</option>
                                         </select>';
                                         echo '<tr id="inscripcion-'.$idInscripcion.'">
-                                            <th scope="row">'.$inscripcion['nombre'].'</th>
-                                            <th scope="row">'.$inscripcion['apellido'].'</th>
-                                            <th scope="row">'.$inscripcion['email'].'</th>
-                                            <th scope="row">'.date('Y-m-d', strtotime($inscripcion['fecha_inscripcion'])).'</th>
-                                            <th scope="row">'.$inscripcion['tipo'].'</th>
-                                            <th scope="row">'.$select_asistencia.'</th>
-                                            <th scope="row">
+                                            <td>'.$inscripcion['nombre'].'</td>
+                                            <td>'.$inscripcion['apellido'].'</td>
+                                            <td>'.$inscripcion['email'].'</td>
+                                            <td>'.date('Y-m-d', strtotime($inscripcion['fecha_inscripcion'])).'</td>
+                                            <td>'.$inscripcion['tipo'].'</td>
+                                            <td>'.$select_asistencia.'</td>
+                                            <td>
                                                 <button class="eliminar-inscripcion btn btn-danger" valor="'.$idInscripcion.'">
                                                     Borrar
                                                 </button>
-                                            </th>
+                                            </td>
                                         </tr>';
                                     }
                             ?>
@@ -291,7 +298,7 @@
     <?php require('comun/barra-fondo.php'); ?>
     
     <div id="id_evento" valor="<?php echo $idEvento; ?>" hidden></div>
-    <script type="text/javascript" src="/js/manejador-evento.js"></script>
-    <script type="text/javascript" src="/js/manejador-ajax.js"></script>
+    <script type="text/javascript" src="js/manejador-evento.js"></script>
+    <script type="text/javascript" src="js/manejador-ajax.js"></script>
 </body>
 </html>

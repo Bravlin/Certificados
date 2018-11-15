@@ -2,7 +2,9 @@
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navegacionPrincipal" aria-controls="navegacionPrincipal" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
     </button>
-    <a class="navbar-brand d-none d-sm-inline-block" href="/index.php">Eventu</a>
+    <a class="navbar-brand d-none d-sm-inline-block" href="index.php">
+        <img class="logo" src="img/logofi.png" alt="FI">
+    </a>
     <form class="form-check-inline mx-0 mx-md-5" action="busqueda.php" method="get">
         <input type="hidden" name="filtro" value="nombre"/>
         <input class="form-control mr-sm-2 my-2" type="search" name="consulta" placeholder="Buscar..." aria-label="Search" required>

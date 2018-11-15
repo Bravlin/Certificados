@@ -38,17 +38,17 @@
                         <option value="0">No</option>
                     </select>';
                     echo '<tr id="inscripcion-'.$idInscripcion.'">
-                        <th scope="row">'.$inscripcion['nombre'].'</th>
-                        <th scope="row">'.$inscripcion['apellido'].'</th>
-                        <th scope="row">'.$inscripcion['email'].'</th>
-                        <th scope="row">'.date('Y-m-d', strtotime($inscripcion['fecha_inscripcion'])).'</th>
-                        <th scope="row">'.$inscripcion['tipo'].'</th>
-                        <th scope="row">'.$select_asistencia.'</th>
-                        <th scope="row">
+                        <td>'.$inscripcion['nombre'].'</td>
+                        <td>'.$inscripcion['apellido'].'</td>
+                        <td>'.$inscripcion['email'].'</td>
+                        <td>'.date('Y-m-d', strtotime($inscripcion['fecha_inscripcion'])).'</td>
+                        <td>'.$inscripcion['tipo'].'</td>
+                        <td>'.$select_asistencia.'</td>
+                        <td>
                             <button class="eliminar-inscripcion btn btn-danger" valor="'.$idInscripcion.'">
                                 Borrar
                             </button>
-                        </th>
+                        </td>
                     </tr>';
                 }
             }

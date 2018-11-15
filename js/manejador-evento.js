@@ -86,4 +86,18 @@ $(document).ready(function(){
             },
         });
     });
+
+    $('#emitir-todos').on('click', function(){
+        var idEvento = $('#id_evento').attr('valor');
+        $.ajax({
+            type: 'POST',
+            url: '/lib/manejador-certificados.php',
+            data: {
+                idEvento: idEvento,
+            },
+            success:function(){
+                alert("Certificados emitidos.");
+            }
+        });
+    });
 });
