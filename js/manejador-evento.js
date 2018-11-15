@@ -41,8 +41,9 @@ $(document).ready(function(){
         var tipo = $('#select-tipo').val();
         $.ajax({
             type: 'POST',
-            url: '/lib/inscribir.php',
+            url: '/lib/manejador-inscripciones.php',
             data: {
+                accion: "A",
                 idEvento: idEvento,
                 idPerfil: idPerfil,
                 tipo: tipo
@@ -59,8 +60,9 @@ $(document).ready(function(){
             var idInscrip = $(this).attr('valor');
             $.ajax({
                 type: 'POST',
-                url: '/lib/eliminar-inscripcion.php',
+                url: '/lib/manejador-inscripciones.php',
                 data: {
+                    accion: "B",
                     idInscrip: idInscrip,
                 },
                 success:function(){
@@ -69,5 +71,19 @@ $(document).ready(function(){
                 }
             });
         }
-    })
+    });
+
+    $('#body-inscripciones').on('change', '.select-asistencia', function(){
+        var idInscrip = $(this).attr('valor');
+        var asistencia = $(this).val();
+        $.ajax({
+            type: 'POST',
+            url: '/lib/manejador-inscripciones.php',
+            data: {
+                accion: "M",
+                idInscrip: idInscrip,
+                asistencia: asistencia,
+            },
+        });
+    });
 });

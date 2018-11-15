@@ -214,8 +214,7 @@
                                     WHERE id NOT IN(
                                         SELECT fk_perfil
                                         FROM inscripcion
-                                        WHERE fk_evento = $idEvento
-                                    ) 
+                                        WHERE fk_evento = $idEvento) 
                                     ORDER BY nombre, apellido ASC;");
                                 while ($perfil = mysqli_fetch_array($perfil_query))
                                     echo "<option value='".$perfil['id']."'>".
@@ -261,15 +260,22 @@
                                     ORDER BY p.nombre, p.apellido;");
                                 if ($inscripciones_query)
                                     while ($inscripcion = mysqli_fetch_array($inscripciones_query)){
-                                        echo '<tr id="inscripcion-'.$inscripcion['id_inscripcion'].'">
+                                        $idInscripcion = $inscripcion['id_inscripcion'];
+                                        $asistencia = (isset($inscripcion['asistencia'])) ? $inscripcion['asistencia'] : -1;
+                                        $select_asistencia = '<select class="select-asistencia form-control" valor='.$idInscripcion.'>
+                                            <option value="" '.(($asistencia == -1) ? "selected" : "").'>S/D</option>
+                                            <option value="1" '.(($asistencia == 1) ? "selected" : "").'>Sí</option>
+                                            <option value="0" '.(($asistencia == 0) ? "selected" : "").'>No</option>
+                                        </select>';
+                                        echo '<tr id="inscripcion-'.$idInscripcion.'">
                                             <th scope="row">'.$inscripcion['nombre'].'</th>
                                             <th scope="row">'.$inscripcion['apellido'].'</th>
                                             <th scope="row">'.$inscripcion['email'].'</th>
                                             <th scope="row">'.date('Y-m-d', strtotime($inscripcion['fecha_inscripcion'])).'</th>
                                             <th scope="row">'.$inscripcion['tipo'].'</th>
-                                            <th scope="row">'.$inscripcion['asistencia'].'</th>
+                                            <th scope="row">'.$select_asistencia.'</th>
                                             <th scope="row">
-                                                <button class="eliminar-inscripcion btn btn-danger" valor="'.$inscripcion['id_inscripcion'].'">
+                                                <button class="eliminar-inscripcion btn btn-danger" valor="'.$idInscripcion.'">
                                                     Borrar
                                                 </button>
                                             </th>
