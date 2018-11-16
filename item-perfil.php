@@ -24,6 +24,9 @@
                 <li><i class="fa fa-envelope mr-1"></i><?php echo $perfil['email']; ?></li>
                 <li><i class="fa fa-phone mr-1"></i><?php echo $perfil['telefono']; ?></li>
             </ul>
+            <a class="btn btn-primary ml-3 mb-3" href="modificar-perfil.php?idPerfil=<?php echo $perfil['id']; ?>">
+                Modificar
+            </a>
             <button class="eliminar-perfil btn btn-danger ml-3 mb-3" valor="<?php echo $perfil['id']; ?>">
                 Eliminar
             </button>

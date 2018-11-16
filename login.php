@@ -36,7 +36,7 @@
     <header>
         <div class="container-fluid text-center">
             <a class="logo mb-5 mt-0" href="index.php">
-                <img src="src/imagenes/logo.svg">FICertif
+                <img src="img/logofi2.png">FICertif
             </a>
         </div>
     </header>

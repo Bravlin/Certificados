@@ -8,8 +8,8 @@
                 </a>
             </div>
             <div class="col-3">
-                <a href="">
-                    <i class="fa fa-bell"></i>
+                <a href="certificados.php">
+                    <i class="fa fa-file"></i>
                     <p>Certificados</p>
                 </a>
             </div>

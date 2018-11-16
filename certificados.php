@@ -33,6 +33,17 @@
                 WHERE p.id = $idPerfil
                 ORDER BY evento;");
         }
+        else
+            return mysqli_query($db,
+                "SELECT e.nombre AS evento,
+                p.nombre, p.apellido,
+                c.id_certificado, c.fecha_emision, c.nombre_certificado AS archivo, c.email_enviado AS email,
+                i.tipo
+                FROM certificado c
+                INNER JOIN inscripcion i ON c.fk_inscripcion = i.id_inscripcion
+                INNER JOIN evento e ON i.fk_evento = e.id_evento
+                INNER JOIN perfil p ON i.fk_perfil = p.id
+                ORDER BY evento;");
     }
 ?>
 

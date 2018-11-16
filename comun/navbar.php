@@ -13,13 +13,13 @@
     <div class="collapse navbar-collapse" id="navegacionPrincipal">
         <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
             <li class="nav-item">
-                <a class="nav-link" href="categorias.php">Categorías</a>
+                <a class="nav-link" href="">Foo</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="etiquetas.php">Etiquetas</a>
+                <a class="nav-link" href="">Foo</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="perfil.php?id_administrador=<?php echo $_SESSION['id_administrador']; ?>">Mi perfil</a>
+                <a class="nav-link" href="../lib/sesion-baja.php">Salir</a>
             </li>
         </ul>
     </div>
