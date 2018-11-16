@@ -43,7 +43,7 @@
                 INNER JOIN inscripcion i ON c.fk_inscripcion = i.id_inscripcion
                 INNER JOIN evento e ON i.fk_evento = e.id_evento
                 INNER JOIN perfil p ON i.fk_perfil = p.id
-                ORDER BY evento;");
+                ORDER BY evento, p.nombre, p.apellido;");
     }
 ?>
 

@@ -76,11 +76,12 @@
                 //$apellido = utf8_decode(ucwords(mb_strtolower($row->apellido, 'UTF-8')));
                 $nombre = ucwords(strtolower($row->nombre));
                 $apellido = ucwords(strtolower($row->apellido));
-                $apinombre = preg_replace('/\s+/', ' ', $nombre." ".$apellido); 
+                $apinombre = preg_replace('/\s+/', ' ', $nombre." ".$apellido);
+                $apinombre = utf8_decode($apinombre);
                 
-                if (mb_detect_encoding($apinombre) == "ASCII"){
+                /*if (mb_detect_encoding($apinombre) == "ASCII"){
                     $apinombre = utf8_encode($apinombre);
-                }
+                }*/
                 
                 $email = strtolower($row->email);
 
