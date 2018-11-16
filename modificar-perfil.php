@@ -78,7 +78,7 @@
             <div class="col-12 col-md-9 col-lg-10 py-5 row justify-content-center mx-auto">
                 <div class="form-container col-10 col-lg-8 py-5 px-1 px-sm-3">
                     <form class="formulario-principal color-blanco" method="POST" enctype="multipart/form-data">
-                        <h1 class="text-center">Registrar perfil</h1>
+                        <h1 class="text-center">Modificar perfil</h1>
                         <input type="hidden" name="confirma" value="si"/>
                         <div class="row cuerpo-form">
                             <div class="col-sm-12 col-md-6 elemento-form">
