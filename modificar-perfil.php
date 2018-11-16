@@ -55,7 +55,10 @@
 
     function validaEmail($email, $db){
         if (filter_var($email, FILTER_VALIDATE_EMAIL)){
-            $query_verificacion = mysqli_query($db, "SELECT * FROM perfil WHERE email = '$email';");
+            $query_verificacion = mysqli_query($db,
+                "SELECT *
+                FROM perfil
+                WHERE id <> $idPerfil AND email = '$email';");
             return mysqli_num_rows($query_verificacion) == 0;
         }
         else
