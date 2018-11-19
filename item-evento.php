@@ -8,10 +8,10 @@
             <a href="<?php echo $enlaceEvento; ?>">
                 <img class="card-img-top" alt="Card image cap"
                     src=<?php
-                        if (file_exists($portada)) {
-                          $portada = URL."/media/portadas-eventos/" . $evento['id_evento'] . "-p";
+                        $portada = URL."/media/portadas-eventos/" . $evento['id_evento'] . "-p";
+                        if (file_exists($portada))
                             echo $portada;
-                        } else
+                        else
                             echo URL."/media/portadas-eventos/0-p";
                     ?>
                 >

@@ -31,7 +31,7 @@
             <?php require('comun/barra-vertical.php'); ?>
             <div class="col-12 col-md-9 col-lg-10 py-5">
                 <h1 class="mb-5 text-center">Administrador de perfiles</h1>
-                <div id="perfiles" class="row px-6">
+                <div class="row px-6">
                   <div class="mb-6 col-sm">
                       <a href="agregar-perfil.php" class="agregar-perfil">
                           <i class="fa fa-plus-circle mr-1"></i>Agregar perfil

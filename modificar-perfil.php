@@ -71,7 +71,7 @@
 <head>
     <title>Modificar perfil - FICertif</title>
     <?php require('comun/head-navegacion.php'); ?>
-    <link rel="stylesheet" type="text/css" href="/css/formulario.css">
+    <link rel="stylesheet" type="text/css" href="<?php echo URL; ?>/css/formulario.css">
 </head>
 <body>
     <?php require('comun/navbar.php'); ?>

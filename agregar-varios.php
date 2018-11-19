@@ -142,9 +142,9 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Modificar perfil - FICertif</title>
+    <title>Agregar varios - FICertif</title>
     <?php require('comun/head-navegacion.php'); ?>
-    <link rel="stylesheet" type="text/css" href="/css/formulario.css">
+    <link rel="stylesheet" type="text/css" href="<?php echo URL; ?>/css/formulario.css">
 </head>
 <body>
     <?php require('comun/navbar.php'); ?>
@@ -160,7 +160,7 @@
                             <div class="col-sm-12 col-md-12 elemento-form">
                               <div class="custom-file">
                                 <input name="csvFile" type="file" class="custom-file-input" id="customFile" >
-                                  <label class="custom-file-label" for="customFile">Elija un Archivo CSV</label>
+                                    <label class="custom-file-label" for="customFile">Elija un Archivo CSV</label>
                                 </div>
                             </div>
                         </div>
