@@ -4,7 +4,7 @@
     require('lib/funcdb.php');
     require('lib/funciones-comunes.php');
     $db = conectadb();
-    
+
     // Variables de control
     $nombre_ok = true;
     $calle_ok = true;
@@ -14,7 +14,7 @@
     $provincia_ok = true;
     $ciudad_ok = true;
     $fecreal_ok = true;
-    
+
     $idEvento = $_REQUEST['id_evento'];
     if (!isset($_REQUEST['confirma']) || $_REQUEST['confirma'] != 'si'){
         $eventos_query = mysqli_query($db,
@@ -91,11 +91,11 @@
                     <div class="contenedor-portada mb-5">
                         <img class="portada" alt="portada"
                             src=<?php
-                                $portada = "/media/portadas-eventos/" . $evento['id_evento'] . "-p";
+                                $portada = URL."/media/portadas-eventos/" . $evento['id_evento'] . "-p";
                                 if (file_exists($portada))
                                     echo $portada;
                                 else
-                                    echo "/media/portadas-eventos/0-p";
+                                    echo URL."/media/portadas-eventos/0-p";
                             ?>
                         >
                         <div class="contenedor-titulo px-1 px-md-3">
@@ -215,13 +215,13 @@
                         <select id="select-perfil" class="form-control" required>
                             <option value="">Elija a quien inscribir...</option>
                             <?php
-                                $perfil_query = mysqli_query($db, 
-                                    "SELECT id, nombre, apellido, email 
+                                $perfil_query = mysqli_query($db,
+                                    "SELECT id, nombre, apellido, email
                                     FROM perfil
                                     WHERE id NOT IN(
                                         SELECT fk_perfil
                                         FROM inscripcion
-                                        WHERE fk_evento = $idEvento) 
+                                        WHERE fk_evento = $idEvento)
                                     ORDER BY nombre, apellido ASC;");
                                 while ($perfil = mysqli_fetch_array($perfil_query))
                                     echo "<option value='".$perfil['id']."'>".
@@ -296,7 +296,7 @@
         </div>
     </div>
     <?php require('comun/barra-fondo.php'); ?>
-    
+
     <div id="id_evento" valor="<?php echo $idEvento; ?>" hidden></div>
     <script type="text/javascript" src="js/manejador-evento.js"></script>
     <script type="text/javascript" src="js/manejador-ajax.js"></script>

@@ -4,11 +4,11 @@
             <a href="certificados.php?idPerfil=<?php echo $perfil['id']; ?>">
                 <img class="imagen-perfil" alt="Perfil"
                     src=<?php
-                        $avatar = "/media/perfiles-usuarios/" . $perfil['id'] . "-perfil";
+                        $avatar = URL."/media/perfiles-usuarios/" . $perfil['id'] . "-perfil";
                         if (file_exists($avatar))
                             echo $avatar;
                         else
-                            echo "/media/perfiles-usuarios/0-perfil";
+                            echo URL."/media/perfiles-usuarios/0-perfil";
                     ?>>
             </a>
         </div>

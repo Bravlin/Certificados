@@ -2,7 +2,7 @@
     $requiere_sesion = true;
     require('lib/sesion-redireccion.php');
     require('lib/funcdb.php');
-    $db = conectadb(); 
+    $db = conectadb();
 ?>
 
 <!DOCTYPE html>
@@ -10,7 +10,7 @@
 <head>
     <title>Admin - FICertif</title>
     <?php require('comun/head-navegacion.php'); ?>
-    <link rel="stylesheet" type="text/css" href="/css/item-consulta.css">
+    <link rel="stylesheet" type="text/css" href="<?php echo URL; ?>/css/item-consulta.css">
 </head>
 <body>
     <?php require('comun/navbar.php'); ?>

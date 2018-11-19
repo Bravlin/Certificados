@@ -10,3 +10,5 @@ eventu/
 certificados/
 
 tmp/
+
+lib/funcdb.php

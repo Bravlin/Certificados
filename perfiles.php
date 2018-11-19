@@ -2,7 +2,7 @@
     $requiere_sesion = true;
     require('lib/sesion-redireccion.php');
     require('lib/funcdb.php');
-    $db = conectadb(); 
+    $db = conectadb();
 ?>
 
 <!DOCTYPE html>
@@ -17,7 +17,7 @@
             text-decoration: none;
             font-size: 1.75em;
         }
-        
+
         .agregar-perfil:hover{
             color: var(--ing-azul);
             text-decoration: none;
@@ -31,10 +31,17 @@
             <?php require('comun/barra-vertical.php'); ?>
             <div class="col-12 col-md-9 col-lg-10 py-5">
                 <h1 class="mb-5 text-center">Administrador de perfiles</h1>
-                <div class="mb-3">
-                    <a href="agregar-perfil.php" class="agregar-perfil">
-                        <i class="fa fa-plus-circle mr-1"></i>Agregar perfil
-                    </a>
+                <div id="perfiles" class="row px-6">
+                  <div class="mb-6 col-sm">
+                      <a href="agregar-perfil.php" class="agregar-perfil">
+                          <i class="fa fa-plus-circle mr-1"></i>Agregar perfil
+                      </a>
+                    </div>
+                  <div class="mb-3 col-sm">
+                      <a href="agregar-varios.php" class="agregar-perfil">
+                          <i class="fa fa-plus-circle mr-1"></i>Agregar varios
+                      </a>
+                  </div>
                 </div>
                 <div id="perfiles" class="row px-2">
                     <?php
@@ -53,6 +60,6 @@
     </div>
     <?php require('comun/barra-fondo.php'); ?>
 
-    <script type="text/javascript" src="/js/manejador-perfil.js"></script>
+    <script type="text/javascript" src="<?php echo URL; ?>/js/manejador-perfil.js"></script>
 </body>
 </html>

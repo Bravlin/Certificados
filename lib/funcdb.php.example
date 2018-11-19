@@ -2,7 +2,7 @@
 
 function conectadb()
 {
-	$link= mysqli_connect ("127.0.0.1","cibercrimen2","password","sistema_certificados"); 
+	$link= mysqli_connect ("127.0.0.1","user","password","db");
 	if (!mysqli_error($link))
 	{
 		mysqli_set_charset($link, "utf8");
