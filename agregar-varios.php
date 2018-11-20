@@ -24,7 +24,7 @@
 
   if (isset($_REQUEST['confirma']) && $_REQUEST['confirma'] == 'si'){
             echo "Procesando";
-            $target_dir = "media/tmp/";
+            $target_dir = "tmp/";
             $target_file = $target_dir. basename($_FILES["csvFile"]["name"]);
             $fileType = pathinfo($target_file,PATHINFO_EXTENSION);
             echo "-- $target_file -- ".$_FILES["csvFile"]["tmp_name"];

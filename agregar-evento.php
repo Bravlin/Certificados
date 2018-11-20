@@ -156,6 +156,6 @@
     </div>
     <?php require('comun/barra-fondo.php'); ?>
     
-    <script type="text/javascript" src="/js/manejador-ajax.js"></script>
+    <script type="text/javascript" src="<?php echo URL;  ?>/js/manejador-ajax.js"></script>
 </body>
 </html>

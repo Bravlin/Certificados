@@ -7,7 +7,7 @@ $(document).ready(function(){
             var idCertif = $(this).attr('valor');
             $.ajax({
                 type: 'POST',
-                url: '/lib/eliminar-certificado.php',
+                url: 'lib/eliminar-certificado.php',
                 data: {
                     idCertif: idCertif,
                 },

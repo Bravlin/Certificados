@@ -6,12 +6,12 @@ $(document).ready(function(){
             var idEvento = $('#id_evento').attr('valor');
             $.ajax({
                 type: 'POST',
-                url: '/lib/eliminar-evento.php',
+                url: 'lib/eliminar-evento.php',
                 data: {
                     idEvento: idEvento,
                 },
                 success:function(){
-                    window.location.replace("/eventos.php");
+                    window.location.replace("eventos.php");
                 }
             });
         }
@@ -41,7 +41,7 @@ $(document).ready(function(){
         var tipo = $('#select-tipo').val();
         $.ajax({
             type: 'POST',
-            url: '/lib/manejador-inscripciones.php',
+            url: 'lib/manejador-inscripciones.php',
             data: {
                 accion: "A",
                 idEvento: idEvento,
@@ -60,7 +60,7 @@ $(document).ready(function(){
             var idInscrip = $(this).attr('valor');
             $.ajax({
                 type: 'POST',
-                url: '/lib/manejador-inscripciones.php',
+                url: 'lib/manejador-inscripciones.php',
                 data: {
                     accion: "B",
                     idInscrip: idInscrip,
@@ -78,7 +78,7 @@ $(document).ready(function(){
         var asistencia = $(this).val();
         $.ajax({
             type: 'POST',
-            url: '/lib/manejador-inscripciones.php',
+            url: 'lib/manejador-inscripciones.php',
             data: {
                 accion: "M",
                 idInscrip: idInscrip,
@@ -91,7 +91,7 @@ $(document).ready(function(){
         var idEvento = $('#id_evento').attr('valor');
         $.ajax({
             type: 'POST',
-            url: '/lib/manejador-certificados.php',
+            url: 'lib/manejador-certificados.php',
             data: {
                 idEvento: idEvento,
             },

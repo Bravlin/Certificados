@@ -12,7 +12,7 @@
                     ?>>
             </a>
         </div>
-        <div class="col-12 col-sm-8 px-0">
+        <div class="col-12 col-sm-8 px-0 contenedor-info">
             <div class="contenedor-nombre px-4">
                 <a class="nombre-apellido" href="certificados.php?idPerfil=<?php echo $perfil['id']; ?>">
                     <h4 class="text-center"><?php echo $perfil['nombre'] . ' ' . $perfil['apellido']; ?></h4>

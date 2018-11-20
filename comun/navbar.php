@@ -19,7 +19,7 @@
                 <a class="nav-link" href="">Foo</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="../lib/sesion-baja.php">Salir</a>
+                <a class="nav-link" href="lib/sesion-baja.php">Salir</a>
             </li>
         </ul>
     </div>

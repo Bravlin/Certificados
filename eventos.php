@@ -10,7 +10,7 @@
 <head>
     <title>Eventos - FICertif</title>
     <?php require('comun/head-navegacion.php'); ?>
-    <link rel="stylesheet" type="text/css" href="/css/item-consulta.css">
+    <link rel="stylesheet" type="text/css" href="css/item-consulta.css">
     <style>
         .agregar-evento{
             color: var(--ing-verde);

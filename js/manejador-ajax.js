@@ -6,7 +6,7 @@ $(document).ready(function(){
         if (idProvincia){
             $.ajax({
                 type: 'POST',
-                url: '/lib/recupera-ciudades.php',
+                url: 'lib/recupera-ciudades.php',
                 data: {
                     id_provincia: idProvincia
                 },

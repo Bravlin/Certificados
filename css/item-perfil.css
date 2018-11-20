@@ -14,7 +14,7 @@
 }
 
 .contenedor-imagen{
-    height: 200px; 
+    height: 210px; 
     background-color: var(--ing-verde);
 }
 
@@ -26,7 +26,6 @@
 .contenedor-nombre{
     width:100%;
     background-color: var(--ing-verde);
-    
 }
 
 .nombre-apellido{
@@ -56,5 +55,23 @@
     
     .imagen-perfil{
         object-fit: cover;
+    }
+}
+
+@media screen and (min-width: 1200px){
+    .nombre-apellido{
+        font-size: 1.5em;
+    }
+    
+    .imagen-perfil{
+        object-fit: cover;
+    }
+
+    .item-perfil{
+        height: 212px;
+    }
+
+    .contenedor-info{
+        overflow-y: auto;
     }
 }

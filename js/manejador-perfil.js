@@ -6,7 +6,7 @@ $(document).ready(function(){
             var idPerfil = $(this).attr('valor');
             $.ajax({
                 type: 'POST',
-                url: '/lib/eliminar-perfil.php',
+                url: 'lib/eliminar-perfil.php',
                 data: {
                     idPerfil: idPerfil,
                 },
