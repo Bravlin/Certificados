@@ -69,14 +69,45 @@
                         $apellidos = mysqli_real_escape_string($db, $apellidos);
                         $organismo = mysqli_real_escape_string($db, $organismo);
                         $cargo = mysqli_real_escape_string($db, $cargo);
-                        mysqli_query($db, "INSERT INTO perfil (nombre, apellido, telefono, email, organismo, cargo)
+                        mysqli_begin_transaction($db);
+                        $sql = "INSERT INTO perfil (nombre, apellido, telefono, email, organismo, cargo)
                             VALUES ('$nombres', '$apellidos', '$telefono', '$email', '$organismo', '$cargo')
                                 ON DUPLICATE KEY UPDATE
                                   nombre = '$nombres', apellido = '$apellidos', telefono = '$telefono', organismo = '$organismo', cargo = '$cargo';
-                            ");
+                            ";
+                        echo $sql;
+                        mysqli_query($db, $sql);
+                        var_dump($_REQUEST);
 
-                    }
+                        $selectEvento = mysqli_real_escape_string($db,$_REQUEST['select-evento']);
+                        if (isset($selectEvento) && (!empty($selectEvento ))) {
+                            $selectTipo = mysqli_real_escape_string($db,$_REQUEST['select-tipo']);
+                            $selectAsistencia = mysqli_real_escape_string($db,$_REQUEST['select-asistencia']);
+                            if ($selectAsistencia == "Presente")  {
+                              $asis = 1;
+                            } else {
+                              $asis = 0;
+                            }
+                            $sql = "SELECT id FROM perfil WHERE email = $email_ok";
+                            echo $sql;
 
+                            $result = mysqli_query($db,$sql);
+                            $row = mysqli_fetch_assoc($result);
+                            if (isset($row["id"]) && (is_int($row["id"]))) {
+                              $sql = "INSERT INTO `inscripcion`( `tipo`, `asistencia`, `fk_perfil`, `fk_evento`)
+                                VALUES ('".$selectTipo."',".$asis.",".$row["id"].",".$selectEvento.")";
+                              echo $sql;
+
+                              $result = mysqli_query($db, "INSERT INTO `inscripcion`( `tipo`, `asistencia`, `fk_perfil`, `fk_evento`)
+                                VALUES ('".$selectTipo."',".$asis.",".$row["id"].",".$selectEvento.")");
+                              }
+                            }
+                            if (mysqli_commit($db)) {
+                              mysqli_rollback($db);
+                            }
+                            mysqli_close($db);
+                            exit;
+                        }
 
                   } else {
                       echo "Error en el tipo de datos";
@@ -164,6 +195,41 @@
                                 </div>
                             </div>
                         </div>
+                        <div class="row my-4">
+                            <div class="col-12 col-sm-4">
+                                <select id="select-evento" name="select-evento" class="form-control" required>
+                                    <option value="">Elija a quien inscribir...</option>
+                                    <?php
+                                        $perfil_query = mysqli_query($db,
+                                            "SELECT id_evento, nombre
+                                            FROM evento
+                                            ORDER BY nombre ASC;");
+                                        while ($perfil = mysqli_fetch_array($perfil_query))
+                                            echo "<option value='".$perfil['id_evento']."'>".
+                                                $perfil['nombre']." ".
+                                                "</option>";
+                                    ?>
+                                </select>
+                            </div>
+                            <div class="col-12 col-sm-4">
+                                <select id="select-tipo" name="select-tipo" class="form-control" required>
+                                    <option value="">Participa como...</option>
+                                    <option value="Asistente">Asistente</option>
+                                    <option value="Evaluador">Evaluador</option>
+                                    <option value="Organizador">Organizador</option>
+                                    <option value="Disertante">Disertante</option>
+                                </select>
+                            </div>
+                            <div class="col-12 col-sm-4">
+                                    <select id="select-asistencia" name="select-asistencia" class="form-control" required>
+                                        <option value="Presente">Presente</option>
+                                        <option value="Ausente">Ausente</option>
+                                    </select>
+                            </div>
+
+                          </div>
+
+
                         <div class="row justify-content-center">
                             <button id="enviar" class="btn ficertifButton" type="submit">Enviar archivo</button>
                         </div>
