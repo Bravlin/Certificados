@@ -88,12 +88,13 @@
                             } else {
                               $asis = 0;
                             }
-                            $sql = "SELECT id FROM perfil WHERE email = $email_ok";
+                            $sql = "SELECT id FROM perfil WHERE email = '$email'";
                             echo $sql;
 
                             $result = mysqli_query($db,$sql);
                             $row = mysqli_fetch_assoc($result);
-                            if (isset($row["id"]) && (is_int($row["id"]))) {
+                            var_dump ($row);
+                            if (isset($row["id"]))  {
                               $sql = "INSERT INTO `inscripcion`( `tipo`, `asistencia`, `fk_perfil`, `fk_evento`)
                                 VALUES ('".$selectTipo."',".$asis.",".$row["id"].",".$selectEvento.")";
                               echo $sql;
@@ -106,7 +107,7 @@
                               mysqli_rollback($db);
                             }
                             mysqli_close($db);
-                            exit;
+
                         }
 
                   } else {
