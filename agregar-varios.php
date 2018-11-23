@@ -41,15 +41,20 @@
             }
 
             $fila = 1;
+            mysqli_begin_transaction($db);
             if (($gestor = fopen($target_file, "r")) !== FALSE) {
               while (($datos = fgetcsv($gestor, 1000, ";")) !== FALSE) {
                 $numero = count($datos);
                 echo "<p> $numero de campos en la línea $fila: <br /></p>\n";
                 $fila++;
+                var_dump($datos);
                 if (($numero == 6) || ($numero == 7)) {
                   //if (filter_var_array($datos,$args)){
                   //if (filter_var(trim($datos[3]), FILTER_SANITIZE_EMAIL)) {
+
                   if ( superValidateEmail(trim($datos[3]))) {
+                    echo "<p>Es valido el mail.. </p>";
+
                     $nombres = $datos[0];
                     $apellidos = $datos[1];
                     $telefono =  $datos[2];
@@ -65,11 +70,12 @@
                     $organismo_ok = $organismo != '';
                     $cargo_ok = $cargo != '';
                     if ($nombres_ok && $apellidos_ok && $telefono_ok && $email_ok && $organismo_ok && $cargo_ok){
+                        echo "<p>No son null..</p>";
                         $nombres = mysqli_real_escape_string($db, $nombres);
                         $apellidos = mysqli_real_escape_string($db, $apellidos);
                         $organismo = mysqli_real_escape_string($db, $organismo);
                         $cargo = mysqli_real_escape_string($db, $cargo);
-                        mysqli_begin_transaction($db);
+
                         $sql = "INSERT INTO perfil (nombre, apellido, telefono, email, organismo, cargo)
                             VALUES ('$nombres', '$apellidos', '$telefono', '$email', '$organismo', '$cargo')
                                 ON DUPLICATE KEY UPDATE
@@ -103,10 +109,11 @@
                                 VALUES ('".$selectTipo."',".$asis.",".$row["id"].",".$selectEvento.")");
                               }
                             }
-                            if (mysqli_commit($db)) {
+                            if (!mysqli_commit($db)) {
+                              echo "Hice rollback";
                               mysqli_rollback($db);
                             }
-                            mysqli_close($db);
+
 
                         }
 
@@ -115,14 +122,20 @@
                   }
                 }
               }
-              fclose($gestor);
-              header("location: perfiles.php");
+
             }
-            exit;
+            mysqli_close($db);
+            fclose($gestor);
+            //exit;
 
 
         }
+        header("location: perfiles.php");
+
+        exit;
+
       }
+
 
 
 
