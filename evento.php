@@ -233,10 +233,11 @@
                     <div class="col-12 col-sm-4 mt-3 mt-sm-0">
                         <select id="select-tipo" class="form-control" required>
                             <option value="">Participa como...</option>
-                            <option value="Asistente">Asistente</option>
-                            <option value="Evaluador">Evaluador</option>
-                            <option value="Organizador">Organizador</option>
-                            <option value="Disertante">Disertante</option>
+                                <?php 
+                                    $caracter_query = mysqli_query($db, "SELECT * FROM caracter;");
+                                    while ($caracter = mysqli_fetch_array($caracter_query))
+                                        echo '<option value="'.$caracter['caracter'].'">'.$caracter['caracter'].'</option>';
+                                ?>
                         </select>
                     </div>
                     <div class="mt-3 mt-sm-0 col-sm-4">
@@ -253,6 +254,7 @@
                                 <th scope="col">Fecha de inscripción</th>
                                 <th scope="col">Participación</th>
                                 <th scope="col">Asistencia</th>
+                                <th scope="col"></th>
                                 <th scope="col"></th>
                             </tr>
                         </thead>
@@ -281,6 +283,11 @@
                                             <td>'.date('Y-m-d', strtotime($inscripcion['fecha_inscripcion'])).'</td>
                                             <td>'.$inscripcion['tipo'].'</td>
                                             <td>'.$select_asistencia.'</td>
+                                            <td>
+                                                <a class="btn btn-primary ml-3 mb-3" href="modificar-perfil.php?idPerfil='.$inscripcion['id_perfil'].'">
+                                                    Modificar
+                                                </a>
+                                            </td>
                                             <td>
                                                 <button class="eliminar-inscripcion btn btn-danger" valor="'.$idInscripcion.'">
                                                     Borrar

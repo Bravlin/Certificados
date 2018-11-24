@@ -70,7 +70,7 @@
                 array_push($todos,$row);
             }
             $result->free();
-            foreach ($todos as $row){ 
+            foreach ($todos as $row){
                 $id = $row->id_inscripcion;
                 //$nombre = utf8_decode(ucwords(mb_strtolower($row->nombre, 'UTF-8')));
                 //$apellido = utf8_decode(ucwords(mb_strtolower($row->apellido, 'UTF-8')));

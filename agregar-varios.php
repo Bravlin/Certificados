@@ -212,7 +212,7 @@
                         <div class="row my-4">
                             <div class="col-12 col-sm-4">
                                 <select id="select-evento" name="select-evento" class="form-control" required>
-                                    <option value="">Elija a quien inscribir...</option>
+                                    <option value="">Elija un evento...</option>
                                     <?php
                                         $perfil_query = mysqli_query($db,
                                             "SELECT id_evento, nombre
@@ -228,10 +228,11 @@
                             <div class="col-12 col-sm-4">
                                 <select id="select-tipo" name="select-tipo" class="form-control" required>
                                     <option value="">Participa como...</option>
-                                    <option value="Asistente">Asistente</option>
-                                    <option value="Evaluador">Evaluador</option>
-                                    <option value="Organizador">Organizador</option>
-                                    <option value="Disertante">Disertante</option>
+                                    <?php 
+                                        $caracter_query = mysqli_query($db, "SELECT * FROM caracter;");
+                                        while ($caracter = mysqli_fetch_array($caracter_query))
+                                            echo '<option value="'.$caracter['caracter'].'">'.$caracter['caracter'].'</option>';
+                                    ?>
                                 </select>
                             </div>
                             <div class="col-12 col-sm-4">

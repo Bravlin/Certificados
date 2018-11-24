@@ -13,16 +13,20 @@
     }
 
     function inscribir($db){
-        $tipos = array("Asistente", "Evaluador", "Organizador", "Disertante");
         $idEvento = (isset($_REQUEST['idEvento'])) ? $_REQUEST['idEvento'] : "";
         $idPerfil = (isset($_REQUEST['idPerfil'])) ? $_REQUEST['idPerfil'] : "";
         $tipo = (isset($_REQUEST['tipo'])) ? $_REQUEST['tipo'] : "";
-        if ($idEvento != "" && $idPerfil != "" && in_array($tipo, $tipos)){
+        if ($idEvento != "" && $idPerfil != "" && $tipo != ""){
             mysqli_query($db, 
                 "INSERT INTO inscripcion (tipo, fk_perfil, fk_evento)
                 VALUES ('$tipo', $idPerfil, $idEvento)");
             $idInscrip = mysqli_insert_id($db);
             if ($idInscrip){
+                echo "SELECT p.id AS id_perfil, p.nombre, p.apellido, p.email,
+                    i.id_inscripcion, i.tipo, i.fecha_inscripcion, i.asistencia
+                    FROM perfil p
+                    INNER JOIN inscripcion i ON i.fk_perfil = p.id
+                    WHERE i.id_inscripcion = $idInscrip;";
                 $inscripcion_query = mysqli_query($db,
                     "SELECT p.id AS id_perfil, p.nombre, p.apellido, p.email,
                     i.id_inscripcion, i.tipo, i.fecha_inscripcion, i.asistencia

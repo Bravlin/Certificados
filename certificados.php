@@ -8,7 +8,7 @@
         if (isset($_REQUEST['idEvento'])){
             $idEvento = $_REQUEST['idEvento'];
             return mysqli_query($db,
-                "SELECT e.nombre AS evento,
+                "SELECT e.nombre AS evento, e.id_evento,
                 p.nombre, p.apellido,
                 c.id_certificado, c.fecha_emision, c.nombre_certificado AS archivo, c.email_enviado AS email,
                 i.tipo
@@ -16,13 +16,13 @@
                 INNER JOIN inscripcion i ON c.fk_inscripcion = i.id_inscripcion
                 INNER JOIN evento e ON i.fk_evento = e.id_evento
                 INNER JOIN perfil p ON i.fk_perfil = p.id
-                WHERE id_evento = $idEvento
+                WHERE e.id_evento = $idEvento
                 ORDER BY p.nombre, p.apellido;");
         }
         elseif (isset($_REQUEST['idPerfil'])){
             $idPerfil = $_REQUEST['idPerfil'];
             return mysqli_query($db,
-                "SELECT e.nombre AS evento,
+                "SELECT e.nombre AS evento, e.id_evento,
                 p.nombre, p.apellido,
                 c.id_certificado, c.fecha_emision, c.nombre_certificado AS archivo, c.email_enviado AS email,
                 i.tipo
@@ -35,7 +35,7 @@
         }
         else
             return mysqli_query($db,
-                "SELECT e.nombre AS evento,
+                "SELECT e.nombre AS evento, e.id_evento,
                 p.nombre, p.apellido,
                 c.id_certificado, c.fecha_emision, c.nombre_certificado AS archivo, c.email_enviado AS email,
                 i.tipo
@@ -81,7 +81,7 @@
                                     $idCertif = $certif['id_certificado'];
                                     $ruta_archivo =  "certificados/".$certif['archivo']; 
                                     echo '<tr id="certificado-'.$idCertif.'">
-                                        <td>'.$certif['evento'].'</td>
+                                        <td><a href="evento.php?id_evento='.$certif['id_evento'].'">'.$certif['evento'].'</a></td>
                                         <td>'.$certif['nombre'].'</td>
                                         <td>'.$certif['apellido'].'</td>
                                         <td>'.$certif['email'].'</td>
