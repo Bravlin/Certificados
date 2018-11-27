@@ -205,8 +205,9 @@
                 <h3 class="mb-4">Inscripciones</h3>
                 <h5>Certificados:</h5>
                 <div class="my-4">
-                    <button id="emitir-todos" class="btn btn-primary" type="button">Emitir a todos</button>
-                    <a class="btn btn-secondary ml-2" href="certificados.php?idEvento=<?php echo $idEvento; ?>">
+                    <button id="generar-todos" class="btn btn-primary mb-2" type="button">Generar todos</button>
+                    <button id="emitir-todos" class="btn btn-success ml-0 ml-sm-2 mb-2" type="button">Emitir a todos</button>
+                    <a class="btn btn-secondary ml-0 ml-sm-2 mb-2" href="certificados.php?idEvento=<?php echo $idEvento; ?>">
                         Consultar
                     </a>
                 </div>

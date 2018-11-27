@@ -1,15 +1,4 @@
 <?php
-    /*
-    * Install
-    * pear install Mail
-    * pear install Mail_mime
-    * pear install Net_SMTP
-    * pear install Auth_SASL2
-    * 
-    * 
-    * 
-    * 
-    */
     define("URL","http://www3.fi.mdp.edu.ar/cibercrimen/verificacion.php?verif=");
 
     set_include_path(".");
@@ -17,44 +6,8 @@
 
     require_once('fpdf.php');
     require_once('fpdi/autoload.php');
-    require_once "Mail.php";
-    require_once "Mail/mime.php";
     require_once "funcdb.php";
     require_once('phpqrcode/qrlib.php');
-
-    $host = "patora.fi.mdp.edu.ar";
-    $username = "user";
-    $password = "pass";
-    $port = "25";
-
-
-
-    $email_from = '"Dto. Informatica - FI - UNMdP" <informatica@fi.mdp.edu.ar>';
-    $email_subject = "Certificado de asistencia Jornada Cibercrimen" ;
-    $email_body = "Estimado @@NAME@@:
-
-    Queremos agradecer la asistencia a las Jornadas de Ciberseguridad denominada
-    \"Lucha contra el Cibercrimen: actualidad y desafíos por encarar \"
-    dictada el 24 de Mayo en el AULA MAGNA de la FACULTAD DE INGENIERÍA de la UNMDP, como  
-    así también acercarle el certificado de asistencia.
-
-    Esperamos que hayan sido de su agrado y nos gustaría recibir sus comentarios mediante 
-    este medio.
-
-    Sin más y a la espera de vernos en otra oportunidad.
-
-
-
-    Lic. Carlos A. Rico 
-    Director del Departamento
-    de ingeniería Informática
-    Facultad de Ingeniería
-    UNMdP
-
-
-
-    " ;
-    $email_address = "informatica@fi.mdp.edu.ar";
 
     $db = conectadb();
     if (isset($_REQUEST['idEvento'])){
@@ -102,57 +55,15 @@
                         $pdf->Output('F',"../tmp/".$file);
                         $pdf->Output('F',"../certificados/".$file);
 
-                        /**
-						$mail = new Mail_mime(array('eol' => "\n"));
-						$text = utf8_decode(str_replace('@@NAME@@', $apinombre,$email_body));
-						$mail->setTXTBody($text);
-						if ($mail->addAttachment("tmp/".$file,'application/pdf')){
-								echo "attached successfully! </br>";
-						} else {
-							echo "Nope, failed to attache!! </br>";
-						}
-						$headers = array (	'From' => $email_from,
-											'Subject' => $email_subject, 
-											'Reply-To' => $email_address,
-											);
-											
-						$body = $mail->get();
-						$hdrs = $mail->headers($headers);
-						
-						$smtp = Mail::factory('smtp', 
-										array ('host' => $host, 
-											   'port' => $port, 
-											   'auth' => true, 
-											   'username' => $username, 
-											   'password' => $password,
-											   'socket_options' => array ('ssl' => array(
-																		'verify_peer'      => false,
-																		'verify_peer_name' => false
-																		)
-																	)
-											   ));
-						*/
-						//$smtp->send($email, $hdrs, $body);
-
-						//if (PEAR::isError($mail)) {
-						//	echo("" . $mail->getMessage() . "\n");
-						//} else {
-						//	echo("Message successfully sent!\n");
-						//}	
-
                         $b_id = $id;  
                         $b_nombreCertificado = $file;
-                        $b_Entregado = true;
                         $b_Aleatorio = $param;
-                        $b_mailEnviado = $email;
                             
-                        $sql = "INSERT INTO certificado (fk_inscripcion, nombre_certificado, entregado, fecha_emision, aleatorio, email_enviado) 
-                            VALUES ($b_id, '$b_nombreCertificado', $b_Entregado, NOW(), '$b_Aleatorio', '$b_mailEnviado')
+                        $sql = "INSERT INTO certificado (fk_inscripcion, nombre_certificado, fecha_emision, aleatorio) 
+                            VALUES ($b_id, '$b_nombreCertificado', NOW(), '$b_Aleatorio')
                             ON DUPLICATE KEY UPDATE  fk_inscripcion = $b_id,
                             nombre_certificado = '$b_nombreCertificado',
-                            entregado = $b_Entregado,
-                            aleatorio = '$b_Aleatorio',
-                            email_enviado = '$b_mailEnviado';";
+                            aleatorio = '$b_Aleatorio';";
                         $db->query($sql, MYSQLI_USE_RESULT);
                     }
                 }

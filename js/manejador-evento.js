@@ -87,7 +87,7 @@ $(document).ready(function(){
         });
     });
 
-    $('#emitir-todos').on('click', function(){
+    $('#generar-todos').on('click', function(){
         var idEvento = $('#id_evento').attr('valor');
         $.ajax({
             type: 'POST',
@@ -96,7 +96,21 @@ $(document).ready(function(){
                 idEvento: idEvento,
             },
             success:function(){
-                alert("Certificados emitidos.");
+                alert("Certificados generados.");
+            }
+        });
+    });
+
+    $('#emitir-todos').on('click', function(){
+        var idEvento = $('#id_evento').attr('valor');
+        $.ajax({
+            type: 'POST',
+            url: 'lib/manejador-email.php',
+            data: {
+                idEvento: idEvento,
+            },
+            success:function(){
+                alert("Certificados enviados.");
             }
         });
     });
