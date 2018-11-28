@@ -73,6 +73,31 @@ $(document).ready(function(){
         }
     });
 
+    $('#body-inscripciones').on('click', '.emitir-cert', function(){
+        var idInscrip = $(this).attr('valor');
+        $.ajax({
+            type: 'POST',
+            url: 'lib/manejador-certificados.php',
+            data: {
+                accion: "I",
+                idInscrip: idInscrip,
+            },
+            success:function(){
+                $.ajax({
+                    type: 'POST',
+                    url: 'lib/manejador-email.php',
+                    data: {
+                        accion: "I",
+                        idInscrip: idInscrip,
+                    },
+                    success:function(){
+                        alert("Certificado enviado con éxito.")
+                    }
+                });
+            }
+        })
+    });
+
     $('#body-inscripciones').on('change', '.select-asistencia', function(){
         var idInscrip = $(this).attr('valor');
         var asistencia = $(this).val();
@@ -84,6 +109,10 @@ $(document).ready(function(){
                 idInscrip: idInscrip,
                 asistencia: asistencia,
             },
+            success:function(){
+                var emitirBoton = "#emitir-i" + idInscrip;
+                $(emitirBoton).prop("disabled", asistencia != 1);
+            }
         });
     });
 
@@ -93,6 +122,7 @@ $(document).ready(function(){
             type: 'POST',
             url: 'lib/manejador-certificados.php',
             data: {
+                accion: "T",
                 idEvento: idEvento,
             },
             success:function(){
@@ -107,6 +137,7 @@ $(document).ready(function(){
             type: 'POST',
             url: 'lib/manejador-email.php',
             data: {
+                accion: 'T',
                 idEvento: idEvento,
             },
             success:function(){

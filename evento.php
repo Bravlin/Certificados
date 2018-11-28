@@ -257,6 +257,7 @@
                                 <th scope="col">Asistencia</th>
                                 <th scope="col"></th>
                                 <th scope="col"></th>
+                                <th scope="col"></th>
                             </tr>
                         </thead>
                         <tbody id="body-inscripciones">
@@ -285,9 +286,14 @@
                                             <td>'.$inscripcion['tipo'].'</td>
                                             <td>'.$select_asistencia.'</td>
                                             <td>
-                                                <a class="btn btn-primary ml-3 mb-3" href="modificar-perfil.php?idPerfil='.$inscripcion['id_perfil'].'">
+                                                <a class="btn btn-primary" href="modificar-perfil.php?idPerfil='.$inscripcion['id_perfil'].'">
                                                     Modificar
                                                 </a>
+                                            </td>
+                                            <td>
+                                                <button id="emitir-i'.$idInscripcion.'" class="emitir-cert btn btn-success" valor="'.$idInscripcion.'"'.(($asistencia == 1) ? "" : "disabled").'>
+                                                    Emitir cert.
+                                                </button>
                                             </td>
                                             <td>
                                                 <button class="eliminar-inscripcion btn btn-danger" valor="'.$idInscripcion.'">

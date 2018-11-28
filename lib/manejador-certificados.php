@@ -10,63 +10,90 @@
     require_once('phpqrcode/qrlib.php');
 
     $db = conectadb();
-    if (isset($_REQUEST['idEvento'])){
-        $idEvento = $_REQUEST['idEvento'];
-        $sql = "SELECT p.nombre, p.apellido, p.email,
-            i.id_inscripcion, i.tipo
-            FROM perfil p
-            INNER JOIN inscripcion i ON i.fk_perfil = p.id
-            WHERE i.fk_evento = $idEvento AND i.asistencia = 1;";
-        if ($result = $db->query($sql, MYSQLI_USE_RESULT)){
-            $todos=Array();
-            while($row = $result->fetch_object()){
-                array_push($todos,$row);
-            }
-            $result->free();
-            foreach ($todos as $row){
-                $id = $row->id_inscripcion;
-                //$nombre = utf8_decode(ucwords(mb_strtolower($row->nombre, 'UTF-8')));
-                //$apellido = utf8_decode(ucwords(mb_strtolower($row->apellido, 'UTF-8')));
-                $nombre = ucwords(strtolower($row->nombre));
-                $apellido = ucwords(strtolower($row->apellido));
-                $apinombre = preg_replace('/\s+/', ' ', $nombre." ".$apellido);
-                $apinombre = utf8_decode($apinombre);
-                
-                /*if (mb_detect_encoding($apinombre) == "ASCII"){
-                    $apinombre = utf8_encode($apinombre);
-                }*/
-                
-                $email = strtolower($row->email);
-
-                //if($result2  = $link->query("select count(*) as count from certificado where id=".$id." AND Entregado IS  TRUE", MYSQLI_USE_RESULT)) {
-                if($result2  = $db->query("SELECT COUNT(*) AS count FROM certificado WHERE fk_inscripcion = $id;", MYSQLI_USE_RESULT)) {
-                    $row = $result2->fetch_object();
-                    $result2->free();
-                    //if ($row->count == 0) {
-                    if ($row->count == 0) {
-                        $param= $id.rand(1000,9999);
-                        $param=str_pad($param, 8, '0', STR_PAD_LEFT);
-
-                        $pdf = genPdf($apinombre,$param);
-                        $file ="Certificado_jornada_cibercrimen_". utf8_decode(str_replace(' ', '_',$apinombre));
-                        $file = preg_replace("/[^a-zA-Z0-9\_\-]+/", "_", $file);
-                        $file = $file.".pdf";
-                        
-                        $pdf->Output('F',"../tmp/".$file);
-                        $pdf->Output('F',"../certificados/".$file);
-
-                        $b_id = $id;  
-                        $b_nombreCertificado = $file;
-                        $b_Aleatorio = $param;
-                            
-                        $sql = "INSERT INTO certificado (fk_inscripcion, nombre_certificado, fecha_emision, aleatorio) 
-                            VALUES ($b_id, '$b_nombreCertificado', NOW(), '$b_Aleatorio')
-                            ON DUPLICATE KEY UPDATE  fk_inscripcion = $b_id,
-                            nombre_certificado = '$b_nombreCertificado',
-                            aleatorio = '$b_Aleatorio';";
-                        $db->query($sql, MYSQLI_USE_RESULT);
+    if (isset($_REQUEST['accion']))
+        switch ($_REQUEST['accion']){
+            case 'T':
+                generarTodos($db);
+                break;
+            case 'I':
+                if (isset($_REQUEST['idInscrip'])){
+                    $idInscrip = $_REQUEST['idInscrip'];
+                    $sql = "SELECT p.nombre, p.apellido, p.email,
+                        i.id_inscripcion, i.tipo
+                        FROM perfil p
+                        INNER JOIN inscripcion i ON i.fk_perfil = p.id
+                        WHERE i.id_inscripcion = $idInscrip AND i.asistencia = 1;";
+                    if ($result = $db->query($sql, MYSQLI_USE_RESULT)){
+                        $row = $result->fetch_object();
+                        $result->free();
+                        generarIndividual($db, $row);
                     }
                 }
+                break;
+        }
+    
+    function generarTodos($db){
+        if (isset($_REQUEST['idEvento'])){
+            $idEvento = $_REQUEST['idEvento'];
+            $sql = "SELECT p.nombre, p.apellido, p.email,
+                i.id_inscripcion, i.tipo
+                FROM perfil p
+                INNER JOIN inscripcion i ON i.fk_perfil = p.id
+                WHERE i.fk_evento = $idEvento AND i.asistencia = 1;";
+            if ($result = $db->query($sql, MYSQLI_USE_RESULT)){
+                $todos=Array();
+                while($row = $result->fetch_object()){
+                    array_push($todos,$row);
+                }
+                $result->free();
+                foreach ($todos as $row)
+                    generarIndividual($db, $row);
+            }
+        }
+    }
+
+    function generarIndividual($db, $row){
+        $id = $row->id_inscripcion;
+        //$nombre = utf8_decode(ucwords(mb_strtolower($row->nombre, 'UTF-8')));
+        //$apellido = utf8_decode(ucwords(mb_strtolower($row->apellido, 'UTF-8')));
+        $nombre = ucwords(strtolower($row->nombre));
+        $apellido = ucwords(strtolower($row->apellido));
+        $apinombre = preg_replace('/\s+/', ' ', $nombre." ".$apellido);
+        $apinombre = utf8_decode($apinombre);
+        
+        /*if (mb_detect_encoding($apinombre) == "ASCII"){
+            $apinombre = utf8_encode($apinombre);
+        }*/
+        
+        $email = strtolower($row->email);
+
+        //if($result2  = $link->query("select count(*) as count from certificado where id=".$id." AND Entregado IS  TRUE", MYSQLI_USE_RESULT)) {
+        if ($result2  = $db->query("SELECT COUNT(*) AS count FROM certificado WHERE fk_inscripcion = $id;", MYSQLI_USE_RESULT)){
+            $row = $result2->fetch_object();
+            $result2->free();
+            //if ($row->count == 0) {
+            if ($row->count == 0) {
+                $param= $id.rand(1000,9999);
+                $param=str_pad($param, 8, '0', STR_PAD_LEFT);
+
+                $pdf = genPdf($apinombre,$param);
+                $file ="Certificado_jornada_cibercrimen_". utf8_decode(str_replace(' ', '_',$apinombre));
+                $file = preg_replace("/[^a-zA-Z0-9\_\-]+/", "_", $file);
+                $file = $file.".pdf";
+                
+                $pdf->Output('F',"../tmp/".$file);
+                $pdf->Output('F',"../certificados/".$file);
+
+                $b_id = $id;  
+                $b_nombreCertificado = $file;
+                $b_Aleatorio = $param;
+                    
+                $sql = "INSERT INTO certificado (fk_inscripcion, nombre_certificado, fecha_emision, aleatorio) 
+                    VALUES ($b_id, '$b_nombreCertificado', NOW(), '$b_Aleatorio')
+                    ON DUPLICATE KEY UPDATE  fk_inscripcion = $b_id,
+                    nombre_certificado = '$b_nombreCertificado',
+                    aleatorio = '$b_Aleatorio';";
+                $db->query($sql, MYSQLI_USE_RESULT);
             }
         }
     }

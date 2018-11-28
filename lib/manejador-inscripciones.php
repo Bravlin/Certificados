@@ -22,11 +22,6 @@
                 VALUES ('$tipo', $idPerfil, $idEvento)");
             $idInscrip = mysqli_insert_id($db);
             if ($idInscrip){
-                echo "SELECT p.id AS id_perfil, p.nombre, p.apellido, p.email,
-                    i.id_inscripcion, i.tipo, i.fecha_inscripcion, i.asistencia
-                    FROM perfil p
-                    INNER JOIN inscripcion i ON i.fk_perfil = p.id
-                    WHERE i.id_inscripcion = $idInscrip;";
                 $inscripcion_query = mysqli_query($db,
                     "SELECT p.id AS id_perfil, p.nombre, p.apellido, p.email,
                     i.id_inscripcion, i.tipo, i.fecha_inscripcion, i.asistencia
@@ -48,6 +43,16 @@
                         <td>'.date('Y-m-d', strtotime($inscripcion['fecha_inscripcion'])).'</td>
                         <td>'.$inscripcion['tipo'].'</td>
                         <td>'.$select_asistencia.'</td>
+                        <td>
+                            <a class="btn btn-primary" href="modificar-perfil.php?idPerfil='.$inscripcion['id_perfil'].'">
+                                Modificar
+                            </a>
+                        </td>
+                        <td>
+                            <button id="emitir-i'.$idInscripcion.'" class="emitir-cert btn btn-success" valor="'.$idInscripcion.'" disabled>
+                                Emitir cert.
+                            </button>
+                        </td>
                         <td>
                             <button class="eliminar-inscripcion btn btn-danger" valor="'.$idInscripcion.'">
                                 Borrar

@@ -15,38 +15,67 @@
     require_once "funcdb.php";
 
     $db = conectadb();
-    if (isset($_REQUEST['idEvento'])){
-        $idEvento = $_REQUEST['idEvento'];
-        $sql = "SELECT p.nombre, p.apellido, p.email,
-            i.id_inscripcion, i.tipo,
-            c.nombre_certificado, c.id_certificado
-            FROM perfil p
-            INNER JOIN inscripcion i ON i.fk_perfil = p.id
-            INNER JOIN certificado c ON i.id_inscripcion = c.fk_inscripcion
-            WHERE i.fk_evento = $idEvento;";
-        if ($result = $db->query($sql, MYSQLI_USE_RESULT)){
-            $todos=Array();
-            while ($row = $result->fetch_object()){
-                array_push($todos,$row);
-            }
-            $result->free();
-            foreach ($todos as $row){
-                $id = $row->id_certificado;
-                $nombre = ucwords(strtolower($row->nombre));
-                $apellido = ucwords(strtolower($row->apellido));
-                $apinombre = preg_replace('/\s+/', ' ', $nombre." ".$apellido);
-                $apinombre = utf8_decode($apinombre);
-                $email = strtolower($row->email);
-                $file = $row->nombre_certificado;
 
-                if (enviarEmail($email, $apinombre, $file)){
-                    $b_Entregado = true;        
-                    $sql = "UPDATE certificado
-                        SET entregado = $b_Entregado, email_enviado = '$email'
-                        WHERE id_certificado = $id;";
-                    $db->query($sql, MYSQLI_USE_RESULT);
+    if (isset($_REQUEST['accion']))
+        switch ($_REQUEST['accion']){
+            case 'T':
+                mandarTodos($db);
+                break;
+            case 'I':
+                if (isset($_REQUEST['idInscrip'])){
+                    $idInscrip = $_REQUEST['idInscrip'];
+                    $sql = "SELECT p.nombre, p.apellido, p.email,
+                        i.id_inscripcion, i.tipo,
+                        c.nombre_certificado, c.id_certificado
+                        FROM perfil p
+                        INNER JOIN inscripcion i ON i.fk_perfil = p.id
+                        INNER JOIN certificado c ON i.id_inscripcion = c.fk_inscripcion
+                        WHERE i.id_inscripcion = $idInscrip;";
+                    if ($result = $db->query($sql, MYSQLI_USE_RESULT)){
+                        $row = $result->fetch_object();
+                        $result->free();
+                        mandarIndividual($db, $row);
+                    }
                 }
+                break;
+        }
+
+    function mandarTodos($db){
+        if (isset($_REQUEST['idEvento'])){
+            $idEvento = $_REQUEST['idEvento'];
+            $sql = "SELECT p.nombre, p.apellido, p.email,
+                i.id_inscripcion, i.tipo,
+                c.nombre_certificado, c.id_certificado
+                FROM perfil p
+                INNER JOIN inscripcion i ON i.fk_perfil = p.id
+                INNER JOIN certificado c ON i.id_inscripcion = c.fk_inscripcion
+                WHERE i.fk_evento = $idEvento;";
+            if ($result = $db->query($sql, MYSQLI_USE_RESULT)){
+                $todos=Array();
+                while ($row = $result->fetch_object()){
+                    array_push($todos,$row);
+                }
+                foreach ($todos as $row)
+                    mandarIndividual($db, $row);
             }
+        }
+    }
+
+    function mandarIndividual($db, $row){
+        $id = $row->id_certificado;
+        $nombre = ucwords(strtolower($row->nombre));
+        $apellido = ucwords(strtolower($row->apellido));
+        $apinombre = preg_replace('/\s+/', ' ', $nombre." ".$apellido);
+        $apinombre = utf8_decode($apinombre);
+        $email = strtolower($row->email);
+        $file = $row->nombre_certificado;
+
+        if (enviarEmail($email, $apinombre, $file)){
+            $b_Entregado = true;        
+            $sql = "UPDATE certificado
+                SET entregado = $b_Entregado, email_enviado = '$email'
+                WHERE id_certificado = $id;";
+            $db->query($sql, MYSQLI_USE_RESULT);
         }
     }
 
