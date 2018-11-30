@@ -13,6 +13,9 @@
     if (isset($_REQUEST['accion']))
         switch ($_REQUEST['accion']){
             case 'T':
+                subirTemplate();
+                break;
+            case 'A':
                 generarTodos($db);
                 break;
             case 'I':
@@ -31,6 +34,22 @@
                 }
                 break;
         }
+
+    function subirTemplate(){
+        if (isset($_FILES['template']) && isset($_REQUEST['idEvento'])){
+            $idEvento = $_REQUEST['idEvento'];
+            $tipo = $_FILES['template']['type'];
+            if ($tipo != "application/pdf")
+                echo "Archivo incorrecto, solo se admite el formato pdf.";
+            else {
+                $ruta = "../Template/template-".$idEvento.".pdf";
+                if (move_uploaded_file($_FILES['template']['tmp_name'], $ruta))
+                    echo "Archivo subido exitosamente.";
+                else
+                    echo "Erro al subir el archivo.";
+            }
+        }
+    }
     
     function generarTodos($db){
         if (isset($_REQUEST['idEvento'])){

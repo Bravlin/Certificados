@@ -116,13 +116,32 @@ $(document).ready(function(){
         });
     });
 
+    $('#subir-template').on('click', function(){
+        var idEvento = $('#id_evento').attr('valor');
+        var formData = new FormData();
+        formData.append("accion", "T");
+        formData.append("idEvento", idEvento);
+        formData.append('template', $('input[type=file]')[0].files[0]);
+        $.ajax({
+            type: 'POST',
+            url: 'lib/manejador-certificados.php',
+            cache: false,
+            contentType: false,
+            processData: false,
+            data: formData,
+            success: function(html){
+                alert(html);
+            }
+        });
+    });
+
     $('#generar-todos').on('click', function(){
         var idEvento = $('#id_evento').attr('valor');
         $.ajax({
             type: 'POST',
             url: 'lib/manejador-certificados.php',
             data: {
-                accion: "T",
+                accion: "A",
                 idEvento: idEvento,
             },
             success:function(){

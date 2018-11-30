@@ -12,3 +12,5 @@ certificados/
 tmp/
 
 lib/funcdb.php
+
+Template/
