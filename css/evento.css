@@ -1,22 +1,22 @@
-.categoria, .info-general i{
+.categoria, .info-general i {
     color: var(--ing-azul);
 }
 
-.categoria:hover{
+.categoria:hover {
     color: var(--ing-azul);
 }
 
-.contenedor-portada{
+.contenedor-portada {
     position: relative;
 }
 
-.portada{
+.portada {
     width: 100%;
     max-height: 360px;
     object-fit: cover;
 }
 
-.contenedor-portada .contenedor-titulo{
+.contenedor-portada .contenedor-titulo {
     background-color: rgba(150, 150, 150, 0.8);
     position: absolute;
     width:100%;
@@ -24,20 +24,20 @@
     color: white;
 }
 
-.contenedor-nivel2{
+.contenedor-nivel2 {
     max-width: 700px;
     max-height: 300px;
     overflow: hidden;
 }
 
-.contenedor-mapa{
+.contenedor-mapa {
     position: relative;
     padding-bottom: 56.25%;
     height: 0;
     overflow: hidden;
 }
 
-.mapa{
+.mapa {
     position: absolute;
     border: 0;
     top:0;
@@ -46,14 +46,19 @@
     height: 100%;
 }
 
-.info-general{
+.info-general {
     background-color: rgb(245, 245, 245);
 }
 
-.inscribirse{
+.inscribirse {
     font-size: 2em;
 }
 
-.usuario, .usuario:hover{
+.usuario, .usuario:hover {
     color: var(--ing-azul);
+}
+
+.contenedor-modal .modal-header {
+    color: white;
+    background-color: var(--ing-verde);
 }

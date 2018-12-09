@@ -80,7 +80,6 @@
     }
 
     function enviarEmail($email, $apinombre, $file){
-        $res;
         $host = "patora.fi.mdp.edu.ar";
         $username = "user";
         $password = "pass";
@@ -134,17 +133,16 @@
 
             if (PEAR::isError($mail)){
                 echo("" . $mail->getMessage() . "\n");
-                $res = false;
+                return false;
             }
             else {
                 echo("Message successfully sent!\n");
-                $res = true;
+                return true;
             }
         }
         else {
             echo "Nope, failed to attache!! </br>";
-            $res = false;
+            return false;
         }
-        return $res;
     }
 ?>

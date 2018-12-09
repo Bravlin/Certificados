@@ -49,8 +49,9 @@
                             </a>
                         </td>
                         <td>
-                            <button id="emitir-i'.$idInscripcion.'" class="emitir-cert btn btn-success" valor="'.$idInscripcion.'" disabled>
-                                Emitir cert.
+                            <button id="emitir-i'.$idInscripcion.'" class="email-ind btn btn-success" valor="'.$idInscripcion.'"
+                            type="button" data-toggle="modal" data-target="#modal-mail" disabled>
+                                Enviar cert.
                             </button>
                         </td>
                         <td>

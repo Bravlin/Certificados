@@ -73,6 +73,7 @@ $(document).ready(function(){
         }
     });
 
+    /*
     $('#body-inscripciones').on('click', '.emitir-cert', function(){
         var idInscrip = $(this).attr('valor');
         $.ajax({
@@ -97,6 +98,7 @@ $(document).ready(function(){
             }
         })
     });
+    */
 
     $('#body-inscripciones').on('change', '.select-asistencia', function(){
         var idInscrip = $(this).attr('valor');
@@ -163,5 +165,17 @@ $(document).ready(function(){
                 alert("Certificados enviados.");
             }
         });
+    });
+
+    $('#body-inscripciones').on('click', '.email-ind', function(){
+        var idInscrip = $(this).attr('valor');
+        $('#emitir-uno').attr('valor', idInscrip);
+        $('#emitir-uno').attr('hidden', false);
+        $('#emitir-todos').attr('hidden', true);
+    });
+
+    $('#email-todos').on('click', function(){
+        $('#emitir-uno').attr('hidden', true);
+        $('#emitir-todos').attr('hidden', false);
     });
 });

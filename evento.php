@@ -214,7 +214,7 @@
                 </div>
                 <div class="my-4">
                     <button id="generar-todos" class="btn btn-primary mb-2" type="button">Generar todos</button>
-                    <button id="emitir-todos" class="btn btn-success ml-0 ml-sm-2 mb-2" type="button">Emitir a todos</button>
+                    <button id="email-todos" class="btn btn-success ml-0 ml-sm-2 mb-2" type="button"  data-toggle="modal" data-target="#modal-mail">Email a todos</button>
                     <a class="btn btn-secondary ml-0 ml-sm-2 mb-2" href="certificados.php?idEvento=<?php echo $idEvento; ?>">
                         Consultar
                     </a>
@@ -300,8 +300,10 @@
                                                 </a>
                                             </td>
                                             <td>
-                                                <button id="emitir-i'.$idInscripcion.'" class="emitir-cert btn btn-success" valor="'.$idInscripcion.'"'.(($asistencia == 1) ? "" : "disabled").'>
-                                                    Emitir cert.
+                                                <button id="emitir-i'.$idInscripcion.'" class="email-ind btn btn-success"
+                                                valor="'.$idInscripcion.'"'.(($asistencia == 1) ? "" : "disabled").'
+                                                type="button" data-toggle="modal" data-target="#modal-mail">
+                                                    Enviar cert.
                                                 </button>
                                             </td>
                                             <td>
@@ -319,6 +321,39 @@
         </div>
     </div>
     <?php require('comun/barra-fondo.php'); ?>
+
+    <div id="modal-mail" class="modal fade contenedor-modal" tabindex="-1" role="dialog" aria-labelledby="modal-mail" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Enviar certificados</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <form class="modal-body">
+                    <div class="row cuerpo-form">
+                        <div class="col-12 elemento-form mb-2">
+                            <label for="remitente">Remitente</label>
+                            <input id="remitente" name="remitente" type="email" class="form-control" placeholder="direccion@correo.com" required>
+                        </div>
+                        <div class="col-12 elemento-form mb-2">
+                            <label for="asunto">Asunto</label>
+                            <input id="asunto" name="asunto" type="text" class="form-control" placeholder="Asunto" required>
+                        </div>
+                        <div class="col-12 elemento-form mb-2">
+                            <label for="cuerpo-mail">Mensaje</label>
+                            <textarea id="cuerpo-mail" name="cuerpo-mail" type="text" class="form-control" placeholder="Cuerpo del mensaje..." required></textarea>
+                        </div>
+                    </div>
+                    <div class="row justify-content-center mt-2">
+                        <button id="emitir-todos" class="btn ficertifButton envioMail" type="submit" disabled hidden>Emitir a todos</button>
+                        <button id="emitir-uno" class="btn ficertifButton envioMail" type="submit" disabled hidden>Emitir</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
 
     <div id="id_evento" valor="<?php echo $idEvento; ?>" hidden></div>
     <script type="text/javascript" src="js/manejador-evento.js"></script>
