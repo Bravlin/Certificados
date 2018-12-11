@@ -152,7 +152,8 @@ $(document).ready(function(){
         });
     });
 
-    $('#emitir-todos').on('click', function(){
+    /*
+    $('#emitir-todos').on('click', function(e){
         var idEvento = $('#id_evento').attr('valor');
         $.ajax({
             type: 'POST',
@@ -166,6 +167,45 @@ $(document).ready(function(){
             }
         });
     });
+    */
+
+    $('#form-mail').on('submit', function(e){
+        e.preventDefault();
+        var datosMail = $(this).serialize();
+        if (!$('#emitir-todos').attr('hidden')){
+            var idEvento = $('#id_evento').attr('valor');
+            $.ajax({
+                type: 'POST',
+                url: 'lib/manejador-email.php',
+                data: datosMail + '&accion=T&idEvento=' + idEvento,
+                success:function(){
+                    alert("Certificados enviados.");
+                }
+            });
+        }
+        else if (!$('#emitir-uno').attr('hidden')){
+            var idInscrip = $('#emitir-uno').attr('valor');
+            $.ajax({
+                type: 'POST',
+                url: 'lib/manejador-certificados.php',
+                data: {
+                    accion: "I",
+                    idInscrip: idInscrip,
+                },
+                success:function(){
+                    $.ajax({
+                        type: 'POST',
+                        url: 'lib/manejador-email.php',
+                        data: datosMail + '&accion=I&idInscrip=' + idInscrip,
+                        success:function(){
+                            alert("Certificado enviado con éxito.")
+                        }
+                    });
+                }
+            });
+        }
+    });
+
 
     $('#body-inscripciones').on('click', '.email-ind', function(){
         var idInscrip = $(this).attr('valor');

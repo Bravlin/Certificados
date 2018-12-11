@@ -85,27 +85,13 @@
         $password = "pass";
         $port = "25";
 
-        $email_from = '"Dto. Informatica - FI - UNMdP" <informatica@fi.mdp.edu.ar>';
-        $email_subject = "Hola" ;
-        $email_body = "Estimado @@NAME@@:
-
-        Felipe definitivamente debería cambiar la contraseña.
-
-
-
-        Lic. Carlos A. Rico 
-        Director del Departamento
-        de ingeniería Informática
-        Facultad de Ingeniería
-        UNMdP
-
-
-
-        " ;
-        $email_address = "informatica@fi.mdp.edu.ar";
+        $email_from = '"Dto. Informatica - FI - UNMdP" <'.$_REQUEST['remitente'].'>';
+        $email_subject = $_REQUEST['asunto'];
+        $email_body = $_REQUEST['cuerpo-mail'];
+        $email_address = $_REQUEST['remitente'];
 
         $mail = new Mail_mime(array('eol' => "\n"));
-        $text = utf8_decode(str_replace('@@NAME@@', $apinombre,$email_body));
+        $text = utf8_decode(str_replace('@@NAME@@', $apinombre, $email_body));
         $mail->setTXTBody($text);
         if ($mail->addAttachment("../certificados/".$file,'application/pdf')){
             echo "attached successfully! </br>";

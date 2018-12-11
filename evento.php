@@ -331,7 +331,7 @@
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
-                <form class="modal-body">
+                <form id="form-mail" class="modal-body">
                     <div class="row cuerpo-form">
                         <div class="col-12 elemento-form mb-2">
                             <label for="remitente">Remitente</label>
@@ -347,8 +347,8 @@
                         </div>
                     </div>
                     <div class="row justify-content-center mt-2">
-                        <button id="emitir-todos" class="btn ficertifButton envioMail" type="submit" disabled hidden>Emitir a todos</button>
-                        <button id="emitir-uno" class="btn ficertifButton envioMail" type="submit" disabled hidden>Emitir</button>
+                        <button id="emitir-todos" class="btn ficertifButton envioMail" type="submit" hidden>Emitir a todos</button>
+                        <button id="emitir-uno" class="btn ficertifButton envioMail" type="submit" hidden>Emitir</button>
                     </div>
                 </form>
             </div>

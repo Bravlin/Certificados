@@ -147,7 +147,7 @@
                             </div>
                         </div>
                         <div class="row justify-content-center">
-                            <button class="btn ficertifButton" type="submit">Enviar</button>
+                            <button class="btn ficertifButton" type="submit">Agregar</button>
                         </div>
                     </form>
                 </div>
